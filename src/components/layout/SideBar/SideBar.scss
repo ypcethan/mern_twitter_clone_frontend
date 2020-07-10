@@ -1,0 +1,26 @@
+@import "../../../styles/base";
+.side-bar{
+    &__container{
+        // align-self: flex-end;
+        // background-color:$light-gray ;
+    }
+
+    &__search{
+        background-color: #E6ECF0;
+        padding: 0.5rem;
+        border-radius: 30px;
+        &--active{
+            border: 1px solid $primary-color;
+            background-color: white;
+            &> svg{
+                color: $primary-color;
+            }
+        }
+        &__input{
+            margin-left: 1rem;
+            border: none;
+            outline: none;
+            background-color: inherit;
+        }
+    }
+}

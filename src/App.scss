@@ -3,4 +3,16 @@
   font-family:  Helvetica, sans-serif;
   width: 90%;
   margin: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar__container{
+  flex:1;
+}
+.main__container{
+  flex:2;
+}
+.sidebar__container{
+  flex:1;
 }
