@@ -1,5 +1,6 @@
 import React from 'react';
 import HomeTweetBox from '../../components/HomeTweetBox/HomeTweetBox';
+import TweetList from '../../components/TweetList/TweetList';
 import './Home.scss';
 
 const Home = () => (
@@ -9,6 +10,7 @@ const Home = () => (
     </div>
     <HomeTweetBox />
     <hr className="home__divider" />
+    <TweetList />
   </div>
 );
 
