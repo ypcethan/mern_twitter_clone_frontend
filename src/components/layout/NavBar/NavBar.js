@@ -7,12 +7,16 @@ import {
   faBookmark,
   faUser,
   faFeather,
+  faDove,
 } from '@fortawesome/free-solid-svg-icons';
 import './NavBar.scss';
 
 const NavBar = () => (
   <div className="nav__container">
-    <div className="nav__logo">Logo</div>
+    <div className="nav__logo">
+
+      <FontAwesomeIcon icon={faDove} />
+    </div>
     <ul className="nav__list">
       <li className="nav__item nav__item--active">
         <FontAwesomeIcon icon={faHome} />
