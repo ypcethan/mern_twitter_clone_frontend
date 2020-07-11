@@ -1,0 +1,56 @@
+@import '../../../styles/base';
+.home{
+    &__tweet__box{
+        display: flex;
+    }
+
+    &__tweet__container{
+        // grow all the way to the right
+        flex:1;
+        display: flex;
+        flex-direction: column;
+    }
+    &__tweet__input{
+        font-size: 1.25rem;
+        color: $light-gray;
+        border: 0px; 
+        outline: none;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+    &__tweet__buttons{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__tweet__submit{
+        background-color: #9BD0F9;
+        color: white;
+        padding:0.5rem 1rem;
+        border:0px;
+        outline: none;
+        margin-right: 2rem; 
+        border-radius: 20px;
+    }
+    &__tweet__buttons__set{
+        color: $primary-color;
+        font-size: 1.5rem;
+        // To align tweet__input and buttons vertically
+        margin-left: -0.5rem;
+    }
+
+    &__tweet__icon{
+        padding:0.5rem;
+        border-radius: 99px;
+        &:hover{
+            background-color: $light-gray;
+        }
+        transition: background-color 0.3s;
+    }
+}
+
+.profile__icon{
+    margin-right: 1rem;
+    margin-left: 1rem;
+    padding-top: 0.75rem;
+}

@@ -1,0 +1,23 @@
+@import '../../../styles/base';
+.home{
+
+    &__title{
+        margin-bottom: 0.5rem;
+        padding: 1rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+        border-bottom: 1px solid $light-gray;
+    }
+  
+    &__divider{
+        height: 8px;
+        background-color: $light-gray;
+        border: 0px;
+    }
+}
+
+.profile__icon{
+    margin-right: 1rem;
+    margin-left: 1rem;
+    padding-top: 0.75rem;
+}
