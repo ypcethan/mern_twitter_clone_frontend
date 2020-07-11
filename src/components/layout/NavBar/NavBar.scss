@@ -35,6 +35,10 @@
         }
 
         transition: all 0.3s;
+        &__link{
+            text-decoration: none;
+            color: inherit;
+        }
     }
 
     &__item__title {
