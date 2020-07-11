@@ -1,0 +1,35 @@
+@import "../../../styles/base";
+.profile{
+    &__header{
+        display: flex;
+        align-items: center;  
+        border-bottom: 1px solid $light-gray;
+        padding:1rem 1rem;
+    }
+    &__title{
+        font-size: 19px;
+        font-weight: 600;
+    }
+
+    &__arrow__icon{
+        margin-right: 1.5rem;
+        padding: 0.5rem;
+        color:#1FA1F1 ;
+        border-radius: 90px;
+        &:hover{
+            background-color: #EBF5FE;
+        }
+        transition: background-color 0.4s;
+    }
+
+    &__title__container{
+        
+        display: flex;
+        flex-direction: column;
+    }
+    &__tweet__count{
+        font-size: 13px;
+        color: #657785;
+    }
+
+}
