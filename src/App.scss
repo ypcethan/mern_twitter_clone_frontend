@@ -1,4 +1,4 @@
-
+@import "./styles/base";
 .App{
   font-family:  Helvetica, sans-serif;
   width: 90%;
@@ -9,9 +9,11 @@
 
 .navbar__container{
   flex:1;
+  border-right: 1px solid $light-gray;
 }
 .main__container{
   flex:2;
+  border-right: 1px solid $light-gray;
 }
 .sidebar__container{
   flex:1;

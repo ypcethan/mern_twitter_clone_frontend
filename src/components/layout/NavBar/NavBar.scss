@@ -4,7 +4,6 @@
         padding-left: 2rem;
         display: flex;
         flex-direction: column;
-        border-right: solid 1px $light-gray;
         height: 100vh;
     }
     &__logo{
@@ -26,6 +25,10 @@
             color:$primary-color;
         }
         transition: all 0.3s;
+    }
+
+    &__item__title{
+        margin-left: 1rem;
     }
 
 }
