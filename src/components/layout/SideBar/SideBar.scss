@@ -1,26 +1,58 @@
 @import "../../../styles/base";
-.side-bar{
-    &__container{
+
+.side-bar {
+    &__container {
         // align-self: flex-end;
         // background-color:$light-gray ;
     }
 
-    &__search{
+    &__search {
         background-color: #E6ECF0;
         padding: 0.5rem;
         border-radius: 30px;
-        &--active{
+        margin-bottom: 1rem;
+
+        &--active {
             border: 1px solid $primary-color;
             background-color: white;
-            &> svg{
+
+            &>svg {
                 color: $primary-color;
             }
         }
-        &__input{
+
+        &__input {
             margin-left: 1rem;
             border: none;
             outline: none;
             background-color: inherit;
         }
     }
+
+    &__content__container {
+        background-color: #F5F8FA;
+        // padding: 0.75rem;
+        border-radius: 20px;
+
+        .title {
+            font-weight: 600;
+            font-size: 1.3rem;
+            border-bottom: 1px solid $light-gray;
+            padding: 0.75rem;
+        }
+    }
+
+    &__content__list {
+        padding-left: 0;
+    }
+
+    &__content__item {
+        border-bottom: 1px solid $light-gray;
+        list-style: none;
+        padding: 0.75rem;
+        &:last-of-type{
+            border-bottom: 0px;
+        }
+    }
+
 }
