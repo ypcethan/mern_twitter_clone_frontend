@@ -1,34 +1,72 @@
 @import "../../../styles/base";
-.nav{
-    &__container{
+
+.nav {
+    &__container {
+        align-self: flex-end;
+        flex:1 0 80%;
         padding-left: 2rem;
         display: flex;
         flex-direction: column;
         height: 100vh;
     }
-    &__logo{
+
+    &__logo {
         margin-top: 2rem;
     }
-    &__list{
+
+    &__list {
         padding-left: 0;
     }
-    &__item{
+
+    &__item {
         list-style: none;
         margin-bottom: 0.5rem;
-        padding:1rem;
+        padding: 1rem;
         font-size: 1.3rem;
         font-weight: 600;
         // display: inline-block; 
-        
-        &:hover, &--active{
+
+        &:hover,
+        &--active {
             background-color: $secondary-color;
-            color:$primary-color;
+            color: $primary-color;
         }
+
         transition: all 0.3s;
     }
 
-    &__item__title{
+    &__item__title {
         margin-left: 1rem;
     }
+}
 
+.tweet__container {
+    background-color: #50afeb;
+    color: white;
+    padding: 0.75rem;
+    width: 75%;
+    border-radius: 99px;
+    text-align: center;
+    border: 0;
+    outline: none;
+
+    &:hover {
+        background-color: #1B91DA;
+    }
+
+    transition: background-color 0.3s;
+}
+
+.feather__icon {
+    display: none;
+}
+
+@media screen and (max-width: $small-screen) {
+    .feather__icon {
+        display: inline-block;
+    }
+
+    .nav__item__title, .tweet__title{
+        display: none;
+    }
 }

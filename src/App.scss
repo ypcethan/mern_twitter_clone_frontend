@@ -1,10 +1,10 @@
 @import "./styles/base";
-.App{
+.app{
   font-family:  Helvetica, sans-serif;
-  width: 90%;
-  margin: auto;
   display: flex;
   flex-direction: row;
+  width: 90%;
+  margin:auto;
 }
 
 .navbar__container{
