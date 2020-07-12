@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faDove,
 } from '@fortawesome/free-solid-svg-icons';
+import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { register } from '../../../redux/auth/authAction';
+import { registerUser } from '../../../redux/auth/authAction';
 import './Register.scss';
 
 const Register = () => {
@@ -12,15 +13,16 @@ const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { register, handleSubmit, errors } = useForm();
 
   const clearAll = () => {
     setName('');
     setEmail('');
     setPassword('');
   };
-  const handleSubmit = (e) => {
+  const onSubmitForm = (e) => {
     e.preventDefault();
-    dispatch(register({
+    dispatch(registerUser({
       name,
       email,
       password,
@@ -35,7 +37,7 @@ const Register = () => {
       <div className="form__header">
         Register
       </div>
-      <form className="form__items" onSubmit={handleSubmit}>
+      <form className="form__items" onSubmit={handleSubmit(onSubmitForm)}>
         <div className="form__group">
           <label htmlFor="name" className="form__label">Name</label>
           <input
@@ -45,7 +47,14 @@ const Register = () => {
             className="form__input"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            ref={register({
+              required: {
+                value: true,
+                message: 'Name is required',
+              },
+            })}
           />
+          {errors.name && <span className="danger">{errors.name.message}</span>}
         </div>
         <div className="form__group">
           <label htmlFor="email" className="form__label">Email</label>
@@ -56,7 +65,18 @@ const Register = () => {
             className="form__input"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            ref={register({
+              required: {
+                value: true,
+                message: 'Email is required',
+              },
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: 'Enter a valid e-mail address',
+              },
+            })}
           />
+          {errors.email && <span className="danger">{errors.email.message}</span>}
         </div>
         <div className="form__group">
           <label htmlFor="password" className="form__label">Password</label>
@@ -67,7 +87,18 @@ const Register = () => {
             className="form__input"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            ref={register({
+              required: {
+                value: true,
+                message: 'Password is required',
+              },
+              minLength: {
+                value: 6,
+                message: 'Password should be at least 6 characters long',
+              },
+            })}
           />
+          {errors.password && <span className="danger">{errors.password.message}</span>}
         </div>
         <button
           type="submit"
