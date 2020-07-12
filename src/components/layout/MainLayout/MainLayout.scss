@@ -1,0 +1,32 @@
+@import "../../../styles/base";
+.main__layout{
+
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  margin:auto;
+}
+.navbar__container{
+  flex:1 2; 
+  border-right: 1px solid $light-gray;
+}
+.main__container{
+  flex:2 1;
+  border-right: 1px solid $light-gray;
+}
+.sidebar__container{
+  flex:1 5;
+}
+
+@media (max-width: $small-screen){
+  .sidebar__container{
+    display: none;
+  }
+  .main__container{
+    flex:4;
+    border-right: 0px;
+  }
+  .app{
+    width: 100%;
+  }
+}
