@@ -1,9 +1,10 @@
-import { REGISTER_SUCCESS, REGISTER_FAIL } from './authType.js';
+import { REGISTER_SUCCESS, REGISTER_FAIL } from './authType';
 
 const initialState = {
   isAuthenticated: false,
   user: null,
   token: null,
+  message: null,
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
@@ -16,6 +17,7 @@ const reducer = (state = initialState, action) => {
     case REGISTER_FAIL:
       return {
         ...state,
+        message: action.payload,
         isAuthenticated: false,
         user: null,
       };
