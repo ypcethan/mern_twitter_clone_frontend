@@ -4,8 +4,10 @@ import Home from './components/pages/Home/Home';
 import Bookmarks from './components/pages/Bookmarks/Bookmarks';
 import Messages from './components/pages/Messages/Messages';
 import Profile from './components/pages/Profile/Profile';
+import Register from './components/pages/Register/Register';
 import AppRoute from './components/layout/AppRoute/AppRoute';
 import MainLayout from './components/layout/MainLayout/MainLayout';
+import AuthLayout from './components/layout/AuthLayout/AuthLayout';
 import './App.scss';
 
 function App() {
@@ -18,6 +20,12 @@ function App() {
             exact
             component={Home}
             layout={MainLayout}
+          />
+          <AppRoute
+            path="/register"
+            exact
+            component={Register}
+            layout={AuthLayout}
           />
           <AppRoute
             path="/bookmarks"
