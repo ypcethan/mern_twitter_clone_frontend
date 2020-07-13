@@ -1,9 +1,22 @@
 @import "../../../styles/base";
 .profile{
+    &__image__container{
+        background-color: gainsboro;
+        min-height: 200px;
+    }
     &__content{
         display: flex;
         flex-direction: column;
         padding: 10px 15px;
+    }
+    &__content__avatar{
+       margin-top: -70px;
+       width: 25%;
+       img{
+           border-radius: 100%;
+           width: 100%;
+           object-position: center;
+       } 
     }
 
     &__content__top{
@@ -17,6 +30,7 @@
     }
 
     &__content__setup__btn{
+        align-self: flex-end;
         padding: 0.5rem 1rem;
         border: 1px solid #1FA1F1;
         outline: none;
@@ -53,6 +67,7 @@
 
     &__content__follow{
         display: flex;
+        font-size: 15px;
         &__count{
             color: black;
             margin-right: 4px;

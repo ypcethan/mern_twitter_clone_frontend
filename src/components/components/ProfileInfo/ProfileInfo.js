@@ -13,10 +13,9 @@ const ProfileInfo = () => (
       Image
     </div>
     <div className="profile__content">
-      Content
       <div className="profile__content__top">
         <div className="profile__content__avatar">
-          Avatar
+          <img src="https://i.pravatar.cc/300" alt="" />
         </div>
         <button type="button" className="profile__content__setup__btn"> Set up profile</button>
       </div>
