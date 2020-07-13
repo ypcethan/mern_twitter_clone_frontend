@@ -1,0 +1,45 @@
+@import "../../../styles/base";
+.profile__edit{
+    &_container{
+        width: 90%;
+        margin:2rem auto;
+    }
+
+    &__title{
+        border-bottom: 1px solid $light-gray;
+        padding-bottom: 0.5rem;
+        padding-left: 1rem;
+    }
+
+    &__form__container{
+        padding: 1rem;
+        // background-color: red;
+    }
+
+    &__form{
+        width: 100%;
+
+        // background-color: green;;
+    }
+    &__input__label{
+        display: block;
+        margin-left: 10px;
+        margin-bottom: 5px;
+    }
+    &__input{
+        display: block;
+        width: 80%;
+        border-radius: 90px;
+        outline: none;
+        border:0px;
+        background-color: $light-gray;
+        height: 2rem;
+        padding-left: 10px;
+        margin-bottom: 2rem;
+        &:focus{
+            background-color: rgb(208, 235, 253);
+        }
+        transition: background-color 0.3s;
+    }
+
+}

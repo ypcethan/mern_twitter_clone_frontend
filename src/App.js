@@ -5,6 +5,7 @@ import Home from './components/pages/Home/Home';
 import Bookmarks from './components/pages/Bookmarks/Bookmarks';
 import Messages from './components/pages/Messages/Messages';
 import Profile from './components/pages/Profile/Profile';
+import ProfileEdit from './components/pages/ProfileEdit/ProfileEdit';
 import Register from './components/pages/Register/Register';
 import Login from './components/pages/Login/Login';
 import AppRoute from './components/layout/AppRoute/AppRoute';
@@ -47,6 +48,7 @@ function App() {
             />
             <AppRoute path="/messages" exact component={Messages} layout={MainLayout} />
             <AppRoute path="/profile" exact component={Profile} layout={MainLayout} />
+            <AppRoute path="/profile/edit" exact component={ProfileEdit} layout={MainLayout} />
           </Switch>
         </div>
       </BrowserRouter>
