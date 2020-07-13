@@ -1,0 +1,22 @@
+@import "../../../styles/base";
+.alert__container{
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.alert{
+    color: white;
+    min-width: 15%;
+    border-radius: 10px;
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    &--danger{
+        background-color: rgb(235, 117, 117);
+    }
+
+    &--success{
+        background-color: rgb(113, 180, 243); 
+    }
+}

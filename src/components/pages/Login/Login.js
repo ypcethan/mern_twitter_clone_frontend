@@ -5,13 +5,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerUser, clearError } from '../../../redux/auth/authAction';
+import { loginUser, clearError } from '../../../redux/auth/authAction';
 import { setAlert } from '../../../redux/alert/alertAction';
-import './Register.scss';
+import '../Register/Register.scss';
 
-const Register = (props) => {
+const Login = (props) => {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const error = useSelector((state) => state.auth.error);
@@ -19,8 +18,7 @@ const Register = (props) => {
   const { register, handleSubmit, errors } = useForm();
 
   const onSubmitForm = () => {
-    dispatch(registerUser({
-      name,
+    dispatch(loginUser({
       email,
       password,
     }));
@@ -40,27 +38,10 @@ const Register = (props) => {
         <FontAwesomeIcon icon={faDove} />
       </div>
       <div className="form__header">
-        Register
+        Login
       </div>
       <form className="form__items" onSubmit={handleSubmit(onSubmitForm)}>
-        <div className="form__group">
-          <label htmlFor="name" className="form__label">Name</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            className="form__input"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            ref={register({
-              required: {
-                value: true,
-                message: 'Name is required',
-              },
-            })}
-          />
-          {errors.name && <span className="danger">{errors.name.message}</span>}
-        </div>
+
         <div className="form__group">
           <label htmlFor="email" className="form__label">Email</label>
           <input
@@ -109,11 +90,11 @@ const Register = (props) => {
           type="submit"
           className="form__submit__btn"
         >
-          Register
+          Login
         </button>
       </form>
     </div>
   );
 };
 
-export default Register;
+export default Login;

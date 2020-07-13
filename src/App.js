@@ -6,9 +6,11 @@ import Bookmarks from './components/pages/Bookmarks/Bookmarks';
 import Messages from './components/pages/Messages/Messages';
 import Profile from './components/pages/Profile/Profile';
 import Register from './components/pages/Register/Register';
+import Login from './components/pages/Login/Login';
 import AppRoute from './components/layout/AppRoute/AppRoute';
 import MainLayout from './components/layout/MainLayout/MainLayout';
 import AuthLayout from './components/layout/AuthLayout/AuthLayout';
+import Alert from './components/components/Alert/Alert';
 import store from './redux';
 import './App.scss';
 
@@ -17,6 +19,7 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <div className="app">
+          <Alert />
           <Switch>
             <AppRoute
               path="/"
@@ -28,6 +31,12 @@ function App() {
               path="/register"
               exact
               component={Register}
+              layout={AuthLayout}
+            />
+            <AppRoute
+              path="/login"
+              exact
+              component={Login}
               layout={AuthLayout}
             />
             <AppRoute
