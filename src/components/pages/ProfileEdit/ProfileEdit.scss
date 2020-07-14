@@ -42,4 +42,19 @@
         transition: background-color 0.3s;
     }
 
+    &__submit__btn{
+        background-color: #77c3f1;
+        border: 0px;
+        outline: none;
+        text-align: center;
+         color: white;
+         width:50%;
+         margin: 1rem 0rem;
+         padding: 1rem;
+         border-radius: 90px;
+         &:hover{
+            background-color: #1B91DA;
+         }
+         transition: background-color 0.4s;
+    }
 }

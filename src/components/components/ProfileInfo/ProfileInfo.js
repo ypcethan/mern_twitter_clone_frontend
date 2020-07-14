@@ -3,10 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCalendarAlt,
 } from '@fortawesome/free-regular-svg-icons';
+import { Link } from 'react-router-dom';
 
 import './ProfileInfo.scss';
 
-const ProfileInfo = () => (
+const ProfileInfo = ({ user }) => (
 
   <div className="profile__content__container">
     <div className="profile__image__container">
@@ -15,12 +16,14 @@ const ProfileInfo = () => (
     <div className="profile__content">
       <div className="profile__content__top">
         <div className="profile__content__avatar">
-          <img src="https://i.pravatar.cc/300" alt="" />
+          {/* <img src="https://i.pravatar.cc/300" alt="" /> */}
+          <img src="" alt="" />
+
         </div>
-        <button type="button" className="profile__content__setup__btn"> Set up profile</button>
+        <Link to="/profile/edit" className="profile__content__setup__btn"> Set up profile</Link>
       </div>
       <div className="profile__content__bottom">
-        <div className="profile__content__name">Ethan Chen</div>
+        <div className="profile__content__name">{user.name}</div>
         <div className="profile__content__username">@ethanypc</div>
         <div className="profile__content__joindate">
           <FontAwesomeIcon icon={faCalendarAlt} className="profile__content__joinicon" />

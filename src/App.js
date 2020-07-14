@@ -47,8 +47,8 @@ function App() {
               layout={MainLayout}
             />
             <AppRoute path="/messages" exact component={Messages} layout={MainLayout} />
-            <AppRoute path="/profile" exact component={Profile} layout={MainLayout} />
             <AppRoute path="/profile/edit" exact component={ProfileEdit} layout={MainLayout} />
+            <AppRoute path="/profile/:userName" component={Profile} layout={MainLayout} />
           </Switch>
         </div>
       </BrowserRouter>

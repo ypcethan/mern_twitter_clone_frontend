@@ -12,6 +12,7 @@ import './Register.scss';
 const Register = (props) => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
+  const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const error = useSelector((state) => state.auth.error);
@@ -21,6 +22,7 @@ const Register = (props) => {
   const onSubmitForm = () => {
     dispatch(registerUser({
       name,
+      userName,
       email,
       password,
     }));
@@ -60,6 +62,24 @@ const Register = (props) => {
             })}
           />
           {errors.name && <span className="danger">{errors.name.message}</span>}
+        </div>
+        <div className="form__group">
+          <label htmlFor="userName" className="form__label">User name</label>
+          <input
+            type="text"
+            name="userName"
+            id="userName"
+            className="form__input"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            ref={register({
+              required: {
+                value: true,
+                message: 'User name is required',
+              },
+            })}
+          />
+          {errors.userName && <span className="danger">{errors.userName.message}</span>}
         </div>
         <div className="form__group">
           <label htmlFor="email" className="form__label">Email</label>

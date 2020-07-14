@@ -1,17 +1,18 @@
 import {
-  REGISTER_SUCCESS, REGISTER_FAIL, CLEAR_ERROR, LOGIN_SUCCESS, LOGIN_FAIL,
+  REGISTER_SUCCESS, REGISTER_FAIL, CLEAR_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, UPDATE_USER_FAIL, UPDATE_USER_SUCCESS,
 } from './authType';
 
 const initialState = {
   isAuthenticated: false,
   user: null,
-  token: null,
+  token: localStorage.getItem('token'),
   error: null,
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
+      localStorage.setItem('token', action.payload.token);
       return {
         ...state,
         isAuthenticated: true,
@@ -20,6 +21,7 @@ const reducer = (state = initialState, action) => {
       };
     case REGISTER_FAIL:
     case LOGIN_FAIL:
+      localStorage.removeItem('token', action.payload.token);
       return {
         ...state,
         error: action.payload,
@@ -31,6 +33,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         error: null,
+      };
+    case UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case UPDATE_USER_FAIL:
+      return {
+        ...state,
+        error: action.payload,
       };
     default:
       return state;
