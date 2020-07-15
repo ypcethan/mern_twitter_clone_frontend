@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHome,
@@ -11,18 +11,10 @@ import {
   faDove,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { loadUser } from '../../../redux/auth/authAction';
 import './NavBar.scss';
 
 const NavBar = () => {
   const user = useSelector((state) => state.auth.user);
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (!isAuthenticated) {
-      dispatch(loadUser());
-    }
-  }, []);
 
   const authLinks = (
     <>
