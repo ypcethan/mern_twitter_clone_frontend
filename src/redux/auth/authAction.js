@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
   REGISTER_SUCCESS, REGISTER_FAIL, CLEAR_ERROR,
   LOGIN_SUCCESS, LOGIN_FAIL, UPDATE_USER_FAIL, UPDATE_USER_SUCCESS,
-  LOAD_USER_FAIL, LOAD_USER_SUCCESS,
+  LOAD_USER_FAIL, LOAD_USER_SUCCESS, SET_IS_LAODING,
 } from './authType';
 
 const baseUrl = 'http://localhost:5000/v1/users';
@@ -17,6 +17,9 @@ const setAuthHeader = (token) => {
 export const loadUser = () => async (dispatch) => {
   try {
     setAuthHeader(localStorage.token);
+    dispatch({
+      type: SET_IS_LAODING,
+    });
     const response = await axios.get(`${baseUrl}/auth`);
     dispatch({
       type: LOAD_USER_SUCCESS,

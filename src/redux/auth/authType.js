@@ -7,3 +7,4 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const CLEAR_ERROR = 'CLEAR_ERROR';
 export const UPDATE_USER_SUCCESS = 'UPDATE_USER_SUCCESS';
 export const UPDATE_USER_FAIL = 'UPDATE_USER_FAIL';
+export const SET_IS_LAODING = 'SET_IS_LOADING';
