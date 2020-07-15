@@ -37,6 +37,7 @@
         border-bottom: 1px solid gray;
         outline: none;
         padding: 4px;
+        
     }
 
     &__submit__btn{
@@ -54,4 +55,10 @@
          }
          transition: background-color 0.4s;
     }
+}
+
+.redirect-link {
+    color: $primary-color;
+    text-decoration: none;
+    margin-left: 0.5rem;
 }

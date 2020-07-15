@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faDove,
@@ -93,6 +94,10 @@ const Login = (props) => {
           Login
         </button>
       </form>
+      <div>
+        Don't have an account yet ?
+        <Link to="/register" className="redirect-link">Register</Link>
+      </div>
     </div>
   );
 };
