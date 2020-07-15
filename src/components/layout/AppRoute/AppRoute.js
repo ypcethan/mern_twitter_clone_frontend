@@ -31,17 +31,17 @@ const AppRoute = ({
     />
   );
   const spinner = (
-    <ClipLoader
-
-      size={150}
-      color="#123abc"
-    />
+    <div className="spinner">
+      <ClipLoader
+        size={150}
+        color="#1B91DA"
+      />
+    </div>
   );
   return (
     isLoading
       ? spinner
       : appRoute
-
   );
 };
 
