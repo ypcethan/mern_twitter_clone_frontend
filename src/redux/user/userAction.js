@@ -5,6 +5,7 @@ const baseUrl = 'http://localhost:5000/v1/users';
 export const getUser = (userName) => async (dispatch) => {
   try {
     const response = await axios.get(`${baseUrl}/${userName}`);
+    console.log(response.data);
     const { user } = response.data;
     dispatch({
       type: GET_USER,

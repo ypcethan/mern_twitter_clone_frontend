@@ -1,5 +1,5 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHome,
@@ -11,15 +11,19 @@ import {
   faDove,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { loadUser } from '../../../redux/auth/authAction';
 import './NavBar.scss';
 
 const NavBar = () => {
   const user = useSelector((state) => state.auth.user);
-  return (
-    <div className="nav__container">
-      <div className="nav__logo">
-        <FontAwesomeIcon icon={faDove} />
-      </div>
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadUser());
+  }, []);
+
+  const authLinks = (
+    <>
       <ul className="nav__list">
         <li className="nav__item nav__item--active">
           <Link to="/" className="nav__item__link">
@@ -48,7 +52,7 @@ const NavBar = () => {
           </Link>
         </li>
         <li className="nav__item">
-          <Link to={`/profile/${user.userName}`} className="nav__item__link">
+          <Link to={`/profile/${user ? user.userName : ''}`} className="nav__item__link">
             <FontAwesomeIcon icon={faUser} />
             <span className="nav__item__title">Profile</span>
           </Link>
@@ -58,6 +62,14 @@ const NavBar = () => {
         <FontAwesomeIcon icon={faFeather} className="feather__icon" />
         <span className="tweet__title">Tweet</span>
       </button>
+    </>
+  );
+  return (
+    <div className="nav__container">
+      <div className="nav__logo">
+        <FontAwesomeIcon icon={faDove} />
+      </div>
+      {user && authLinks}
     </div>
   );
 };

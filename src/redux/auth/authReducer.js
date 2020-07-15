@@ -1,4 +1,5 @@
 import {
+  LOAD_USER_SUCCESS, LOAD_USER_FAIL,
   REGISTER_SUCCESS, REGISTER_FAIL, CLEAR_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, UPDATE_USER_FAIL, UPDATE_USER_SUCCESS,
 } from './authType';
 
@@ -10,6 +11,18 @@ const initialState = {
 };
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case LOAD_USER_SUCCESS:
+      return {
+        ...state,
+        user: action.payload,
+        isAuthenticated: true,
+      };
+    case LOAD_USER_FAIL:
+      return {
+        ...state,
+        user: null,
+        isAuthenticated: false,
+      };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
       localStorage.setItem('token', action.payload.token);

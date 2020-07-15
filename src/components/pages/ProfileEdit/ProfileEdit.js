@@ -11,23 +11,22 @@ const ProfileEdit = () => {
   const [name, setName] = useState(userData.name);
   const [email, setEmail] = useState(userData.email);
   const [userName, setUserName] = useState(userData.userName);
-  const [avatar, setAvatar] = useState('');
+  const [avatar, setAvatar] = useState();
+  const [coverImage, setCoverImage] = useState(userData.avatar);
 
   const onSubmitFrom = (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('avatar', avatar);
+    if (avatar) {
+      formData.append('avatar', avatar);
+    }
+    if (coverImage) {
+      formData.append('coverImage', coverImage);
+    }
     formData.append('name', name);
     formData.append('userName', userName);
     formData.append('email', email);
     formData.append('id', userData._id);
-    // dispatch(updateUser({
-    //   id: userData._id,
-    //   name,
-    //   userName,
-    //   email,
-    //   avatar,
-    // }));
     dispatch(updateUser(formData, userData._id));
   };
 
@@ -71,13 +70,21 @@ const ProfileEdit = () => {
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
             />
-            <label htmlFor="username" className="profile__edit__input__label">Avatar</label>
+            <label htmlFor="avatar" className="profile__edit__input__label">Avatar</label>
             <input
               className="profile__edit__input"
               type="file"
               name="avatar"
               id="avatar"
               onChange={(e) => { setAvatar(e.target.files[0]); }}
+            />
+            <label htmlFor="coverImage" className="profile__edit__input__label">Cover Image</label>
+            <input
+              className="profile__edit__input"
+              type="file"
+              name="coverImage"
+              id="coverImage"
+              onChange={(e) => { setCoverImage(e.target.files[0]); }}
             />
             <button type="submit" className="profile__edit__submit__btn">Update</button>
           </form>
