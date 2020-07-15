@@ -32,6 +32,10 @@
         outline: none;
         margin-right: 2rem; 
         border-radius: 20px;
+        &:hover{
+            background-color: $primary-color;
+        }
+        transition: background-color 0.3s;
     }
     &__tweet__buttons__set{
         color: $primary-color;

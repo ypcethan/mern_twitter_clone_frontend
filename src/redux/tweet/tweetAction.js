@@ -8,6 +8,10 @@ export const createTweet = (data) => async (dispatch) => {
   try {
     const response = await axios.post(`${baseUrl}`, data);
     console.log(response);
+    dispatch({
+      type: CREATE_TWEET,
+      payload: response.data.tweet,
+    });
   } catch (error) {
     dispatch({
       type: TWEET_ERROR,
