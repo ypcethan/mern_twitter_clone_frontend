@@ -2,6 +2,7 @@ import {
   LOAD_USER_SUCCESS, LOAD_USER_FAIL,
   REGISTER_SUCCESS, REGISTER_FAIL, CLEAR_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, UPDATE_USER_FAIL, UPDATE_USER_SUCCESS,
   SET_IS_LAODING,
+  LOGOUT,
 } from './authType';
 
 const initialState = {
@@ -42,9 +43,10 @@ const reducer = (state = initialState, action) => {
         token: action.payload.token,
         isLoading: false,
       };
+    case LOGOUT:
     case REGISTER_FAIL:
     case LOGIN_FAIL:
-      localStorage.removeItem('token', action.payload.token);
+      localStorage.removeItem('token');
       return {
         ...state,
         error: action.payload,

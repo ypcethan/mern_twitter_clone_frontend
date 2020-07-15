@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, useRouteMatch } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { loadUser } from '../../../redux/auth/authAction';

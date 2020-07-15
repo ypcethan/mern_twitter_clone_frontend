@@ -2,7 +2,7 @@ import axios from 'axios';
 import {
   REGISTER_SUCCESS, REGISTER_FAIL, CLEAR_ERROR,
   LOGIN_SUCCESS, LOGIN_FAIL, UPDATE_USER_FAIL, UPDATE_USER_SUCCESS,
-  LOAD_USER_FAIL, LOAD_USER_SUCCESS, SET_IS_LAODING,
+  LOAD_USER_FAIL, LOAD_USER_SUCCESS, SET_IS_LAODING, LOGOUT,
 } from './authType';
 
 const baseUrl = 'http://localhost:5000/v1/users';
@@ -70,6 +70,9 @@ export const clearError = () => ({
   type: CLEAR_ERROR,
 });
 
+export const logout = () => ({
+  type: LOGOUT,
+});
 export const updateUser = (data, id) => async (dispatch) => {
   try {
     const response = await axios.patch(`${baseUrl}/${id}`, data);
