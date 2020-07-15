@@ -19,7 +19,9 @@ const NavBar = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(loadUser());
+    if (!isAuthenticated) {
+      dispatch(loadUser());
+    }
   }, []);
 
   const authLinks = (

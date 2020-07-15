@@ -32,12 +32,14 @@ function App() {
               path="/register"
               exact
               component={Register}
+              isPrivate={false}
               layout={AuthLayout}
             />
             <AppRoute
               path="/login"
               exact
               component={Login}
+              isPrivate={false}
               layout={AuthLayout}
             />
             <AppRoute
