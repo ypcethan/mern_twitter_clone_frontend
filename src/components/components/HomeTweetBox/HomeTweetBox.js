@@ -12,7 +12,13 @@ const HomeTweetBox = () => {
   return (
     <div className="home__tweet__box">
       <div className="profile__icon">
-        <FontAwesomeIcon icon={faUser} />
+        {user.avatar ? (
+
+          <img src={user.avatar} alt="" />
+        ) : (
+
+          <FontAwesomeIcon icon={faUser} />
+        )}
       </div>
       <div className="home__tweet__container">
         <input type="text" placeholder="What's happening?" className="home__tweet__input" />
