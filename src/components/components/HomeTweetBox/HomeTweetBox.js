@@ -24,7 +24,7 @@ const HomeTweetBox = () => {
     <div className="home__tweet__box">
       <div className="profile__icon">
         {user.avatar ? (
-          <img src={user.avatar} alt="" />
+          <img src={user.avatarUrl} alt="" />
         ) : (
           <FontAwesomeIcon icon={faUser} />
         )}

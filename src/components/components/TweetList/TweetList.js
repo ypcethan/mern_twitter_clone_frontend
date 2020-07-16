@@ -1,10 +1,11 @@
 import React from 'react';
 import TweetItem from '../TweetItem/TweetItem';
 
-const TweetList = () => (
+const TweetList = ({ tweets }) => (
   <div>
-    TweetList
-    <TweetItem />
+    {
+        tweets.map((tweet) => <TweetItem key={tweet._id} />)
+      }
   </div>
 );
 

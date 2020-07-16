@@ -11,7 +11,7 @@ import {
 const TweetItem = () => (
   <div className="tweet__item__container">
     <div className="tweet__item__avatar__container">
-      Avatar
+      {/* <img src={tweet} alt=""/> */}
     </div>
     <div className="tweet__item__content__container">
       <div>

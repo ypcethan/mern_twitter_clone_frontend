@@ -1,5 +1,6 @@
 import {
   GET_TWEET, CREATE_TWEET, UPDATE_TWEET, DELETE_TWEET, GET_ALL_TWEETS_FROM_USER, TWEET_ERROR,
+  GET_RELEVENT_TWEETS,
 } from './tweetType';
 
 const initialState = {
@@ -19,6 +20,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         tweets: [...state.tweets, action.payload],
+      };
+    case GET_RELEVENT_TWEETS:
+      return {
+        ...state,
+        tweets: action.payload,
       };
     case TWEET_ERROR:
       return {

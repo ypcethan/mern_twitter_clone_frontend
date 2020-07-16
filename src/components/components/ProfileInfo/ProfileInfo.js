@@ -13,13 +13,13 @@ const ProfileInfo = ({ user }) => (
   <div className="profile__content__container">
     <div className="profile__image__container">
       {/* Image */}
-      <img src={`${user.coverImage}`} alt="" />
+      <img src={`${user.coverImageUrl}`} alt="" />
     </div>
     <div className="profile__content">
       <div className="profile__content__top">
         <div className="profile__content__avatar">
           {/* <img src="https://i.pravatar.cc/300" alt="" /> */}
-          <img src={`${user.avatar}`} alt="" />
+          <img src={`${user.avatarUrl}`} alt="" />
 
         </div>
         <Link to="/profile/edit" className="profile__content__setup__btn"> Set up profile</Link>
