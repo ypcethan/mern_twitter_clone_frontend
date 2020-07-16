@@ -3,7 +3,8 @@
 .nav {
 
     &__container {
-        position: fixed;
+        position: sticky;
+        top:0px;
         align-self: flex-end;
         flex:1 0 80%;
         padding-left: 2rem;
@@ -74,6 +75,9 @@
 }
 
 @media screen and (max-width: $small-screen) {
+    .nav__container{
+        padding-left: 0px;
+    }
     .feather__icon {
         display: inline-block;
     }
