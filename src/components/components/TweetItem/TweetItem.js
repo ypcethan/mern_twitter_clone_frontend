@@ -1,12 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faComment,
-    faHeart,
-    faBookmark,
-} from "@fortawesome/free-regular-svg-icons";
+import TweetButtonSet from "../../components/TweetButtonSet/TweetButtonSet";
 import "./TweetItem.scss";
 
 const TweetItem = ({ tweet }) => (
@@ -31,11 +26,7 @@ const TweetItem = ({ tweet }) => (
                 <Link to={`/${tweet.createdBy.userName}/status/${tweet._id}`} 
                     className="tweet__item__content">{tweet.content}</Link>
             </div>
-            <div className="tweet__item__buttons">
-                <FontAwesomeIcon icon={faComment} className="tweet__item__icon" />
-                <FontAwesomeIcon icon={faHeart} className="tweet__item__icon" />
-                <FontAwesomeIcon icon={faBookmark} className="tweet__item__icon" />
-            </div>
+            <TweetButtonSet />
         </div>
     </div>
 );

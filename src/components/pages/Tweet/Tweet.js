@@ -2,7 +2,6 @@ import React,{useEffect} from "react";
 import { useDispatch, useSelector} from "react-redux";
 import {useParams} from "react-router-dom";
 import {getTweet} from "../../../redux/tweet/tweetAction";
-
 import TweetDisplay from "../../components/TweetDisplay/TweetDisplay";
 const Tweet = () => {
     const dispatch = useDispatch();
@@ -19,7 +18,9 @@ const Tweet = () => {
                     Tweet
                 </div>
             </div>
-            {tweet && <TweetDisplay tweet={tweet} />}
+            {tweet &&
+                <TweetDisplay tweet={tweet} />
+            }
 
         </div>
     );

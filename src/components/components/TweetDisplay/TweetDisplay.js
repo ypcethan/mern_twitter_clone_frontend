@@ -1,5 +1,6 @@
 import React from "react";
 import moment from "moment";
+import TweetButtonSet from "../TweetButtonSet/TweetButtonSet";
 import "./TweetDisplay.scss";
 const TweetDisplay = ({tweet}) => {
     const user = tweet.createdBy;
@@ -23,8 +24,8 @@ const TweetDisplay = ({tweet}) => {
             </div>
             <div className='tweet__likes'>
                 12 Comments
-                
             </div>
+            <TweetButtonSet />
         </div>
     );
 };

@@ -50,21 +50,21 @@
         color: black;
     }
 
-    &__buttons{
-        display: flex;
-        justify-content: space-between;
-        width: 90%;
-        font-size: 1.2rem;
-        color:rgb(165, 165, 165);
-    }
+    // &__buttons{
+    //     display: flex;
+    //     justify-content: space-between;
+    //     width: 90%;
+    //     font-size: 1.2rem;
+    //     color:rgb(165, 165, 165);
+    // }
 
-    &__icon{
-        padding:0.5rem;
-        border-radius: 90px;
-        &:hover{
-            background-color: #E1EFFA;
-            color: $primary-color;
-        }
-        transition: all 0.4s;
-    }
+    // &__icon{
+    //     padding:0.5rem;
+    //     border-radius: 90px;
+    //     &:hover{
+    //         background-color: #E1EFFA;
+    //         color: $primary-color;
+    //     }
+    //     transition: all 0.4s;
+    // }
 }
