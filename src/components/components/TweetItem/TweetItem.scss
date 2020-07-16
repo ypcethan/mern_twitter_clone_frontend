@@ -29,6 +29,11 @@
         font-weight: 500;
         font-size: 1.2rem;
         margin-right: 0.75rem;
+        text-decoration: none;
+        color: black; 
+        &:hover{
+            text-decoration: underline;
+        }
     }
     &__username{
         color: #657785;
