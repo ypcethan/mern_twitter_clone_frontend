@@ -13,8 +13,10 @@ const Home = () => {
   }, []);
   return (
     <div className="home">
-      <div className="home__title">
-        Home
+      <div className="home__title__container">
+        <div className="home__title">
+          Home
+        </div>
       </div>
       <HomeTweetBox />
       <hr className="home__divider" />

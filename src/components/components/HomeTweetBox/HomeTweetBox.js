@@ -14,16 +14,16 @@ const HomeTweetBox = () => {
   const user = useSelector((state) => state.auth.user);
   const [content, setContent] = useState('');
   const submitTweet = () => {
-    console.log('Click');
     dispatch(createTweet({
       content,
       createdBy: user._id,
     }));
+    setContent('');
   };
   return (
     <div className="home__tweet__box">
       <div className="profile__icon">
-        {user.avatar ? (
+        {user.avatarUrl ? (
           <img src={user.avatarUrl} alt="" />
         ) : (
           <FontAwesomeIcon icon={faUser} />

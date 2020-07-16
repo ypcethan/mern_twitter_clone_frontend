@@ -11,12 +11,18 @@
     }
 
     &__content__container{
+        // flex:6;
         display: flex;
         flex-direction: column;
     }
 
     &__avatar__container{
         margin-right: 10px;
+        img{
+            object-fit: cover;
+            width: 50px;
+            border-radius: 100%;
+        }
     }
 
     &__user{

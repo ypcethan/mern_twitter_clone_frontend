@@ -71,12 +71,12 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="nav__container">
+    <nav className="nav__container">
       <div className="nav__logo">
         <FontAwesomeIcon icon={faDove} />
       </div>
       {user && authLinks}
-    </div>
+    </nav>
   );
 };
 

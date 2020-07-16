@@ -1,12 +1,18 @@
 @import '../../../styles/base';
 .home{
 
-    &__title{
+    &__title__container{
+
         margin-bottom: 0.5rem;
         padding: 1rem;
+        border-bottom: 1px solid $light-gray;
+        position: sticky;
+        top:0px;
+        background-color: white;
+    }
+    &__title{
         font-size: 1.3rem;
         font-weight: 600;
-        border-bottom: 1px solid $light-gray;
     }
   
     &__divider{

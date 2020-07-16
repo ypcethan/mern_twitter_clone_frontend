@@ -1,6 +1,6 @@
 import React from 'react';
 import './TweetItem.scss';
-
+import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faComment,
@@ -8,25 +8,26 @@ import {
   faBookmark,
 } from '@fortawesome/free-regular-svg-icons';
 
-const TweetItem = () => (
+const TweetItem = ({ tweet }) => (
   <div className="tweet__item__container">
     <div className="tweet__item__avatar__container">
-      {/* <img src={tweet} alt=""/> */}
+      <img src={tweet.createdBy.avatarUrl} alt="" />
     </div>
     <div className="tweet__item__content__container">
       <div>
         <div className="tweet__item__header">
           <span className="tweet__item__user">
-            name
+            {tweet.createdBy.name}
           </span>
           <span className="tweet__item__username">
-            @Username
+            @
+            {tweet.createdBy.userName}
             <span className="dot">&#183;</span>
-            1h
+            {moment(tweet.updatedAt, 'YYYYMMDD').fromNow() }
           </span>
         </div>
 
-        <div className="tweet__item__content">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur at consequuntur a vitae cumque officia odit cupiditate temporibus, ad iusto voluptates sequi provident sapiente earum quibusdam ducimus maiores repellat placeat.</div>
+        <div className="tweet__item__content">{tweet.content}</div>
       </div>
       <div className="tweet__item__buttons">
         <FontAwesomeIcon icon={faComment} className="tweet__item__icon" />

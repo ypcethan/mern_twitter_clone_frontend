@@ -1,7 +1,9 @@
 @import "../../../styles/base";
 
 .nav {
+
     &__container {
+        position: fixed;
         align-self: flex-end;
         flex:1 0 80%;
         padding-left: 2rem;

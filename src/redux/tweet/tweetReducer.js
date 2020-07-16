@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
     case CREATE_TWEET:
       return {
         ...state,
-        tweets: [...state.tweets, action.payload],
+        tweets: [action.payload, ...state.tweets],
       };
     case GET_RELEVENT_TWEETS:
       return {
