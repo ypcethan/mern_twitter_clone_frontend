@@ -4,8 +4,8 @@
         "es6": true
     },
     "extends": [
-        "plugin:react/recommended",
-        "airbnb"
+        "eslint:recommended",
+        "plugin:react/recommended"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -22,12 +22,22 @@
         "react"
     ],
     "rules": {
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "react/jsx-props-no-spreading": "off",
-        "react/prop-types":"off",
-        "jsx-a11y/label-has-associated-control":"off",
-        "import/no-mutable-exports":"off",
-        "import/prefer-default-export":"off",
-        "no-underscore-dangle": "off"
+        "indent": [
+            "error",
+            4
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "double"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "react/prop-types":"off"
     }
 }
