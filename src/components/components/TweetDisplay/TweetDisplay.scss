@@ -1,0 +1,52 @@
+@import "../../../styles/base";
+.tweet__display{
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.tweet__user{
+    &__info__container{
+        display: flex;
+        align-items: center;
+    }
+    &__icon{
+        img{
+            width:50px;
+            border-radius: 100%;
+        }
+        margin-right: 10px;
+    }
+    &__info{
+        display: flex;
+        flex-direction: column;
+    }
+    &__name{
+        font-size: 15px;
+        font-weight: bold;
+        margin-bottom: 3px;
+    }
+    &__username{
+        font-size: 15px;
+        color: #8E9DA7;
+    }
+}
+
+.tweet__content{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+}
+.tweet__published__time{
+    color: #808F9B;
+    font-size: 15px;
+    font-weight: lighter;
+    margin-bottom: 15px; 
+}
+
+.tweet__likes{
+    border-top: 1px solid $light-gray;
+    border-bottom: 1px solid $light-gray;
+    padding:15px 5px;
+    font-size: 15px;
+
+}

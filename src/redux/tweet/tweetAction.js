@@ -51,3 +51,18 @@ export const getAllTweetsFromUser = (userId) => async (dispatch) => {
     }
 };
 
+export const getTweet = (id) => async (dispatch) => {
+    try {
+        const response = await axios.get(`${baseUrl}/${id}`);
+        console.log(response);
+        dispatch({
+            type: GET_TWEET,
+            payload: response.data.tweet,
+        });
+    } catch (error) {
+        dispatch({
+            type: TWEET_ERROR,
+            payload: error.response.data.message,
+        });
+    }
+};
