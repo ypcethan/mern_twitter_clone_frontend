@@ -13,3 +13,16 @@
   align-items: center;
   height: 100vh;
 }
+
+.title__container{
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+  border-bottom: 1px solid $light-gray;
+  position: sticky;
+  top:0px;
+  background-color: white;
+}
+.page__title{
+  font-size: 1.3rem;
+  font-weight: 600;
+}

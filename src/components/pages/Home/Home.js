@@ -13,8 +13,8 @@ const Home = () => {
     }, []);
     return (
         <div className="home">
-            <div className="home__title__container">
-                <div className="home__title">
+            <div className="title__container">
+                <div className="page__title">
           Home
                 </div>
             </div>

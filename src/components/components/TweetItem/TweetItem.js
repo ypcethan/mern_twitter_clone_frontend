@@ -10,7 +10,7 @@ import {
 import "./TweetItem.scss";
 
 const TweetItem = ({ tweet }) => (
-    <div className="tweet__item__container">
+    <Link to={`${tweet.createdBy.userName}/status/${tweet._id}`} className="tweet__item__container">
         <div className="tweet__item__avatar__container">
             <img src={tweet.createdBy.avatarUrl} alt="" />
         </div>
@@ -21,8 +21,7 @@ const TweetItem = ({ tweet }) => (
                         {tweet.createdBy.name}
                     </Link>
                     <span className="tweet__item__username">
-            @
-                        {tweet.createdBy.userName}
+                        @{tweet.createdBy.userName}
                         <span className="dot">&#183;</span>
                         {moment(tweet.updatedAt, "YYYYMMDD").fromNow() }
                     </span>
@@ -36,7 +35,7 @@ const TweetItem = ({ tweet }) => (
                 <FontAwesomeIcon icon={faBookmark} className="tweet__item__icon" />
             </div>
         </div>
-    </div>
+    </Link>
 );
 
 export default TweetItem;
