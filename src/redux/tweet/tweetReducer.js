@@ -3,12 +3,14 @@ import {
     GET_RELEVENT_TWEETS,
     CREATE_COMMENT,
     GET_ALL_COMMENTS,
+    GET_ALL_USER_COMMENTS,
 } from "./tweetType";
 
 const initialState = {
     selectedTweet: null,
     tweets: [],
     comments:[],
+    commentedTweets: [],
     newlyAddedComment:null,
     newCommentsCount:null,
     newLikesCount:null,
@@ -17,6 +19,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+    case GET_ALL_USER_COMMENTS:
+        return {
+            ...state, 
+            commentedTweets: action.payload
+        }; 
     case CREATE_COMMENT:
         return {
             ...state,

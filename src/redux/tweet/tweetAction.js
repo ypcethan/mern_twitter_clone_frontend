@@ -1,6 +1,6 @@
 import axios from "axios";
 import {
-    GET_TWEET, CREATE_TWEET, UPDATE_TWEET, DELETE_TWEET, GET_ALL_TWEETS_FROM_USER, TWEET_ERROR, GET_RELEVENT_TWEETS, CREATE_COMMENT, GET_ALL_COMMENTS, CREATE_LIKE,
+    GET_TWEET, CREATE_TWEET, UPDATE_TWEET, DELETE_TWEET, GET_ALL_TWEETS_FROM_USER, TWEET_ERROR, GET_RELEVENT_TWEETS, CREATE_COMMENT, GET_ALL_COMMENTS, CREATE_LIKE, GET_ALL_USER_COMMENTS,
 } from "./tweetType";
 
 const baseUrl = "http://localhost:5000/v1/tweets";
@@ -104,10 +104,10 @@ export const getAllUserComments = (userId) => async (dispatch) => {
         const response = await axios.get(`${baseUrl}/user/${userId}/comments` );
         console.log("Comments");
         console.log(response.data);
-        // dispatch({
-        //     type: GET_ALL_COMMENTS,
-        //     payload: response.data.comments,
-        // });
+        dispatch({
+            type: GET_ALL_USER_COMMENTS,
+            payload: response.data.tweets,
+        });
     } catch (error) {
         dispatch({
             type: TWEET_ERROR,

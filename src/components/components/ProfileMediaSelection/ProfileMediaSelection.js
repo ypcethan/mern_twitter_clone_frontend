@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import "./ProfileMediaSelection.scss";
 
-const ProfileMediaSelection = () => {
-    const [selected, setSelected] = useState("tweets");
+const ProfileMediaSelection = ({setTab, selected}) => {
+    // const [selected, setSelected] = useState("tweets");
     const handleClick = (e) => {
-        setSelected(e.target.getAttribute("name"));
-        console.log(selected);
+        setTab(e.target.getAttribute("name"));
     };
     return (
         <div className="media__selection__container">
