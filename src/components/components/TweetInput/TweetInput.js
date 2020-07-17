@@ -6,7 +6,7 @@ import {
 import { faImage } from "@fortawesome/free-regular-svg-icons";
 import "./TweetInput.scss";
 
-const TweetInput = ({user ,onSubmit , submitLabel}) => {
+const TweetInput = ({user ,onSubmit , submitLabel, placeHolder}) => {
     const [content, setContent] = useState("");
     const handleSubmit = () => {
         const tweetData = {
@@ -28,7 +28,7 @@ const TweetInput = ({user ,onSubmit , submitLabel}) => {
             <div className="home__tweet__container">
                 <input
                     type="text"
-                    placeholder="What's happening?"
+                    placeholder={placeHolder}
                     className="home__tweet__input"
                     value={content}
                     onChange={(e) => setContent(e.target.value)}

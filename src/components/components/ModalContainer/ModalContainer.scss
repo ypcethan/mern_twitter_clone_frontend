@@ -1,0 +1,40 @@
+@import "../../../styles/base";
+.modal{
+    position: absolute;
+    top: 10%;
+    bottom: 30%;
+    left: 30%;
+    right: 30%;
+    background-color: white;
+    border-radius: 20px;
+    border:0px;
+    outline: none;
+    font-family:  Helvetica, sans-serif;
+
+}
+
+.modal__overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(gray, 0.5);
+}
+
+.modal__header{
+    padding:.5rem 2rem;
+    border-bottom: 1px solid $light-gray;
+}
+
+.modal__close__btn{
+    font-size: 22px;
+    color: $primary-color;
+    border-radius: 100%;
+    cursor: pointer;
+    padding:0.5rem;
+    &:hover{
+        background-color: #EBF5FE;
+    }
+    transition: background-color 0.3s;
+}

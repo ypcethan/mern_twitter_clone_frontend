@@ -22,7 +22,8 @@ const Home = () => {
               Home
                 </div>
             </div>
-            <TweetInput user={user} onSubmit={submitTweet} submitLabel={"Tweet"} />
+            <TweetInput user={user} onSubmit={submitTweet} submitLabel="Tweet" 
+                placeHolder="What's happening?"/>
             <hr className="home__divider" />
             <TweetList tweets={tweets} />
         </div>

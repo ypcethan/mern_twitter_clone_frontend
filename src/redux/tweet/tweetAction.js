@@ -1,6 +1,6 @@
 import axios from "axios";
 import {
-    GET_TWEET, CREATE_TWEET, UPDATE_TWEET, DELETE_TWEET, GET_ALL_TWEETS_FROM_USER, TWEET_ERROR, GET_RELEVENT_TWEETS,
+    GET_TWEET, CREATE_TWEET, UPDATE_TWEET, DELETE_TWEET, GET_ALL_TWEETS_FROM_USER, TWEET_ERROR, GET_RELEVENT_TWEETS, CREATE_COMMENT, GET_ALL_COMMENTS,
 } from "./tweetType";
 
 const baseUrl = "http://localhost:5000/v1/tweets";
@@ -66,3 +66,36 @@ export const getTweet = (id) => async (dispatch) => {
         });
     }
 };
+
+
+export const createComment = (tweetId,data) => async (dispatch) => {
+    try {
+        const response = await axios.post(`${baseUrl}/${tweetId}/comments`, data);
+        dispatch({
+            type: CREATE_COMMENT,
+            payload: response.data.comment,
+        });
+    } catch (error) {
+        dispatch({
+            type: TWEET_ERROR,
+            payload: error.response.data.message,
+        });
+    }
+};
+
+
+export const getComments = (tweetId) => async (dispatch) => {
+    try {
+        const response = await axios.get(`${baseUrl}/${tweetId}/comments` );
+        dispatch({
+            type: GET_ALL_COMMENTS,
+            payload: response.data.comments,
+        });
+    } catch (error) {
+        dispatch({
+            type: TWEET_ERROR,
+            payload: error.response.data.message,
+        });
+    }
+};
+

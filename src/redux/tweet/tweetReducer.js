@@ -1,16 +1,30 @@
 import {
     GET_TWEET, CREATE_TWEET, UPDATE_TWEET, DELETE_TWEET, GET_ALL_TWEETS_FROM_USER, TWEET_ERROR,
     GET_RELEVENT_TWEETS,
+    CREATE_COMMENT,
+    GET_ALL_COMMENTS,
 } from "./tweetType";
 
 const initialState = {
     selectedTweet: null,
     tweets: [],
+    comments:[],
+    newlyAddedComment:null,
     error: null,
 };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+    case CREATE_COMMENT:
+        return {
+            ...state,
+            newlyAddedComment: action.payload
+        };
+    case GET_ALL_COMMENTS:
+        return {
+            ...state,
+            comments: action.payload
+        };
     case GET_TWEET:
         return {
             ...state,

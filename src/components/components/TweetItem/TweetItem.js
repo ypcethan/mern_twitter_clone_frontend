@@ -26,7 +26,7 @@ const TweetItem = ({ tweet }) => (
                 <Link to={`/${tweet.createdBy.userName}/status/${tweet._id}`} 
                     className="tweet__item__content">{tweet.content}</Link>
             </div>
-            <TweetButtonSet />
+            <TweetButtonSet tweet={tweet} />
         </div>
     </div>
 );
