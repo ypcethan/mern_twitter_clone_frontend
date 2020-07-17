@@ -18,6 +18,10 @@
         color: $primary-color;
     }
     transition: all 0.4s;
+    &__container{
+        display: flex;
+        align-items: center;
+    }
 }
 .tweet__button__count{
     font-size: 13px;

@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import ModalContainer from "../../components/ModalContainer/ModalContainer";
 import TweetInput from "../TweetInput/TweetInput";
-import {createComment} from "../../../redux/tweet/tweetAction";
+import {createComment,createLike} from "../../../redux/tweet/tweetAction";
 import "./TweetButtonSet.scss";
    
 const TweetButtonSet = ({tweet}) => {
@@ -24,21 +24,42 @@ const TweetButtonSet = ({tweet}) => {
     const submitComment = (data) => {
         dispatch(createComment(tweet._id,data));
     };
+    const handleLike = () => {
+        dispatch(createLike(tweet._id));
+    };
     return (
         <div className='tweet__buttons__container'>
             <div
-                className="tweet__button__icon"
+                className="tweet__button__icon__container" 
             >
                 <FontAwesomeIcon 
                     icon={faComment}
                     onClick={openModal}
+                    className="tweet__button__icon"
                 /> 
                 <span className='tweet__button__count'>
                     {tweet.comments.length}
                 </span>
             </div>
-            <FontAwesomeIcon icon={faHeart} className="tweet__button__icon" />
-            <FontAwesomeIcon icon={faBookmark} className="tweet__button__icon" />
+            <div className="tweet__button__icon__container" >
+                <FontAwesomeIcon 
+                    icon={faHeart}
+                    className="tweet__button__icon"
+                    onClick={handleLike}
+                /> 
+                <span className='tweet__button__count'>
+                    {tweet.likes.length}
+                </span>
+            </div>
+            <div  className="tweet__button__icon__container" >
+                <FontAwesomeIcon 
+                    icon={faBookmark}
+                    className="tweet__button__icon"
+                /> 
+                <span className='tweet__button__count'>
+                    {tweet.comments.length}
+                </span>
+            </div>
             <ModalContainer modalIsOpen={modalIsOpen} closeModal={closeModal}>
                 <TweetInput 
                     user={user} 

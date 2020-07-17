@@ -10,6 +10,8 @@ const initialState = {
     tweets: [],
     comments:[],
     newlyAddedComment:null,
+    newCommentsCount:null,
+    newLikesCount:null,
     error: null,
 };
 
@@ -18,8 +20,9 @@ const reducer = (state = initialState, action) => {
     case CREATE_COMMENT:
         return {
             ...state,
-            newlyAddedComment: action.payload,
-            comments:[action.payload,...state.comments]
+            newlyAddedComment: action.payload.comment,
+            comments:[action.payload.comment,...state.comments],
+            newLikesCount:action.payload.count
         };
     case GET_ALL_COMMENTS:
         return {

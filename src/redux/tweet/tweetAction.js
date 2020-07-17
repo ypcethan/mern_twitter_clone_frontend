@@ -1,6 +1,6 @@
 import axios from "axios";
 import {
-    GET_TWEET, CREATE_TWEET, UPDATE_TWEET, DELETE_TWEET, GET_ALL_TWEETS_FROM_USER, TWEET_ERROR, GET_RELEVENT_TWEETS, CREATE_COMMENT, GET_ALL_COMMENTS,
+    GET_TWEET, CREATE_TWEET, UPDATE_TWEET, DELETE_TWEET, GET_ALL_TWEETS_FROM_USER, TWEET_ERROR, GET_RELEVENT_TWEETS, CREATE_COMMENT, GET_ALL_COMMENTS, CREATE_LIKE,
 } from "./tweetType";
 
 const baseUrl = "http://localhost:5000/v1/tweets";
@@ -73,7 +73,7 @@ export const createComment = (tweetId,data) => async (dispatch) => {
         const response = await axios.post(`${baseUrl}/${tweetId}/comments`, data);
         dispatch({
             type: CREATE_COMMENT,
-            payload: response.data.comment,
+            payload: response.data,
         });
     } catch (error) {
         dispatch({
@@ -99,3 +99,34 @@ export const getComments = (tweetId) => async (dispatch) => {
     }
 };
 
+export const getAllUserComments = (userId) => async (dispatch) => {
+    try {
+        const response = await axios.get(`${baseUrl}/user/${userId}/comments` );
+        console.log("Comments");
+        console.log(response.data);
+        // dispatch({
+        //     type: GET_ALL_COMMENTS,
+        //     payload: response.data.comments,
+        // });
+    } catch (error) {
+        dispatch({
+            type: TWEET_ERROR,
+            payload: error.response.data.message,
+        });
+    }
+};
+export const createLike = (tweetId) => async (dispatch) => {
+    try {
+        const response = await axios.post(`${baseUrl}/${tweetId}/likes`);
+        
+        dispatch({
+            type: CREATE_LIKE,
+            payload: response.data,
+        });
+    } catch (error) {
+        dispatch({
+            type: TWEET_ERROR,
+            payload: error.response.data.message,
+        });
+    }
+};

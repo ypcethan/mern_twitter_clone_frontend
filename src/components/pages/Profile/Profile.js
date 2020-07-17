@@ -6,7 +6,7 @@ import ProfileMediaSelection from "../../components/ProfileMediaSelection/Profil
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 import TweetList from "../../components/TweetList/TweetList";
 import { getUser } from "../../../redux/user/userAction";
-import {getAllTweetsFromUser} from "../../../redux/tweet/tweetAction";
+import {getAllTweetsFromUser, getAllUserComments} from "../../../redux/tweet/tweetAction";
 import "./Profile.scss";
 
 const Profile = () => {
@@ -16,10 +16,12 @@ const Profile = () => {
     const tweets = useSelector(state=>state.tweet.tweets);
     useEffect(() => {
         dispatch(getUser(userName));
+
     }, [userName]);
     useEffect(()=> {
         if(user){
             dispatch(getAllTweetsFromUser(user._id));
+            dispatch(getAllUserComments(user._id));
         }
     },[user]);
     return (

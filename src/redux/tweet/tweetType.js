@@ -8,3 +8,6 @@ export const TWEET_ERROR = "TWEET_ERROR";
 
 export const CREATE_COMMENT = "CREATE_COMMENT";
 export const GET_ALL_COMMENTS = "GET_ALL_COMMENTS";
+export const GET_ALL_USER_COMMENTS = "GET_ALL_USER_COMMENTS";
+export const CREATE_LIKE = "CREATE_LIKE";
+export const ADD_BOOKMARK = "ADD_BOOKMARK";
