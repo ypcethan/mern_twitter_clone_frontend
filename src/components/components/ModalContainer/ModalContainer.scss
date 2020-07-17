@@ -38,3 +38,12 @@
     }
     transition: background-color 0.3s;
 }
+
+@media (max-width:$small-screen){
+    .modal{
+   
+        left: 10%;
+        right: 10%;
+       
+    }
+}

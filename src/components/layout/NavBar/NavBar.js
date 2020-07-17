@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,14 +13,27 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { logout } from "../../../redux/auth/authAction";
+import ModalContainer from "../../components/ModalContainer/ModalContainer";
+import TweetInput from "../../components/TweetInput/TweetInput";
+import {createTweet} from "../../../redux/tweet/tweetAction";
 import "./NavBar.scss";
 
 const NavBar = () => {
+    const [modalIsOpen,setIsOpen] = useState(false);
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth.user);
 
     const onLogOut = () => {
         dispatch(logout());
+    };
+    const openModal = () => {
+        setIsOpen(true);
+    };
+    const closeModal = () => {
+        setIsOpen(false);
+    };
+    const submitTweet = (data) => {
+        dispatch(createTweet(data));
     };
     const authLinks = (
         <>
@@ -64,10 +77,20 @@ const NavBar = () => {
                     </button>
                 </li>
             </ul>
-            <button type="button" className="tweet__container">
+            <button type="button" className="tweet__container"
+                onClick={openModal}>
                 <FontAwesomeIcon icon={faFeather} className="feather__icon" />
                 <span className="tweet__title">Tweet</span>
             </button>
+            <ModalContainer modalIsOpen={modalIsOpen} closeModal={closeModal}>
+                <TweetInput 
+                    user={user} 
+                    onSubmit={submitTweet}
+                    submitLabel="Tweet"
+                    placeHolder="What's happening?"
+                    closeModal = {closeModal}
+                />
+            </ModalContainer>
         </>
     );
     return (

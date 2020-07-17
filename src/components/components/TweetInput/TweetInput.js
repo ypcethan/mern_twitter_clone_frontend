@@ -6,7 +6,7 @@ import {
 import { faImage } from "@fortawesome/free-regular-svg-icons";
 import "./TweetInput.scss";
 
-const TweetInput = ({user ,onSubmit , submitLabel, placeHolder}) => {
+const TweetInput = ({user ,onSubmit , submitLabel, placeHolder, closeModal=null}) => {
     const [content, setContent] = useState("");
     const handleSubmit = () => {
         const tweetData = {
@@ -15,6 +15,9 @@ const TweetInput = ({user ,onSubmit , submitLabel, placeHolder}) => {
         };
         onSubmit(tweetData);
         setContent("");
+        if (closeModal){
+            closeModal();
+        }
     };
     return (
         <div className="home__tweet__box">

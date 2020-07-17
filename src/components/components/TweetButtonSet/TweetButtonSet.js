@@ -66,6 +66,7 @@ const TweetButtonSet = ({tweet}) => {
                     onSubmit={submitComment}
                     submitLabel="Reply"
                     placeHolder="Tweet your reply"
+                    closeModal={closeModal}
                 />
             </ModalContainer>
         </div>
