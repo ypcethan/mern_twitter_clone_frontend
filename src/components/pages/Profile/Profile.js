@@ -36,7 +36,7 @@ const Profile = () => {
             );
         case "comments":
             return (
-                <CommentList tweet={commentedTweets[0]} />
+                <CommentList tweets={commentedTweets} />
             );
         }
     };

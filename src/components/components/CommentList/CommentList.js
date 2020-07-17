@@ -31,15 +31,19 @@ const CommentListItem = ({tweet})=> (
         </div>
     </div>  
 );
-const CommentList = ({tweet}) => {
+const CommentList = ({tweets}) => {
     return (
-        <div  className="comment__item__wrapper">
-            <CommentListItem tweet={tweet} />
-            {tweet.comments.map(comment => (
-                <CommentListItem tweet={comment} key={comment._id} />
-            ))}
+        <>
+            {tweets.map(tweet=> (
+                <div  className="comment__item__wrapper" key={tweet._id}>
+                    <CommentListItem tweet={tweet} />
+                    {tweet.comments.map(comment => (
+                        <CommentListItem tweet={comment} key={comment._id} />
+                    ))}
              
-        </div>
+                </div>
+            ))}
+        </>
     );
 };
 
