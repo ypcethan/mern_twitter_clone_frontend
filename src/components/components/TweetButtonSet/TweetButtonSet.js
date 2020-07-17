@@ -13,7 +13,6 @@ import "./TweetButtonSet.scss";
    
 const TweetButtonSet = ({tweet}) => {
     const [modalIsOpen,setIsOpen] = useState(false);
-    const [content ,setContent] = useState("");
     const user = useSelector(state=>state.auth.user);
     const dispatch = useDispatch();
     const openModal = () => {
@@ -27,11 +26,17 @@ const TweetButtonSet = ({tweet}) => {
     };
     return (
         <div className='tweet__buttons__container'>
-            <FontAwesomeIcon 
-                icon={faComment}
+            <div
                 className="tweet__button__icon"
-                onClick={openModal}
-            />
+            >
+                <FontAwesomeIcon 
+                    icon={faComment}
+                    onClick={openModal}
+                /> 
+                <span className='tweet__button__count'>
+                    {tweet.comments.length}
+                </span>
+            </div>
             <FontAwesomeIcon icon={faHeart} className="tweet__button__icon" />
             <FontAwesomeIcon icon={faBookmark} className="tweet__button__icon" />
             <ModalContainer modalIsOpen={modalIsOpen} closeModal={closeModal}>

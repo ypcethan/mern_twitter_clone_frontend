@@ -18,7 +18,8 @@ const reducer = (state = initialState, action) => {
     case CREATE_COMMENT:
         return {
             ...state,
-            newlyAddedComment: action.payload
+            newlyAddedComment: action.payload,
+            comments:[action.payload,...state.comments]
         };
     case GET_ALL_COMMENTS:
         return {

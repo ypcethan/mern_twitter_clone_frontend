@@ -1,12 +1,13 @@
-import React from 'react';
-import TweetItem from '../TweetItem/TweetItem';
+import React from "react";
+import TweetItem from "../TweetItem/TweetItem";
 
-const TweetList = ({ tweets }) => (
-  <div>
-    {
-        tweets.map((tweet) => <TweetItem key={tweet._id} tweet={tweet} />)
-      }
-  </div>
+const TweetList = ({ tweets,hasButtonSet=true }) => (
+    <div>
+        {
+            tweets.map((tweet) => <TweetItem key={tweet._id} tweet={tweet} 
+                hasButtonSet={hasButtonSet}/>)
+        }
+    </div>
 );
 
 export default TweetList;

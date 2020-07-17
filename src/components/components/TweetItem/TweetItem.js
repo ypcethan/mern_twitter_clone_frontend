@@ -4,7 +4,7 @@ import moment from "moment";
 import TweetButtonSet from "../../components/TweetButtonSet/TweetButtonSet";
 import "./TweetItem.scss";
 
-const TweetItem = ({ tweet }) => (
+const TweetItem = ({ tweet , hasButtonSet}) => (
     <div  className="tweet__item__container">
         <div className="tweet__item__avatar__container">
             <img src={tweet.createdBy.avatarUrl} alt="" />
@@ -26,7 +26,9 @@ const TweetItem = ({ tweet }) => (
                 <Link to={`/${tweet.createdBy.userName}/status/${tweet._id}`} 
                     className="tweet__item__content">{tweet.content}</Link>
             </div>
+            {hasButtonSet && 
             <TweetButtonSet tweet={tweet} />
+            }
         </div>
     </div>
 );

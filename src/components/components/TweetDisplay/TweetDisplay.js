@@ -23,9 +23,9 @@ const TweetDisplay = ({tweet}) => {
                 {moment(tweet.createdAt).format("h:mm a . MMMM Do, YYYY")}
             </div>
             <div className='tweet__likes'>
-                12 Comments
+                {tweet.comments.length} Comments
             </div>
-            <TweetButtonSet />
+            <TweetButtonSet tweet={tweet}/>
         </div>
     );
 };
