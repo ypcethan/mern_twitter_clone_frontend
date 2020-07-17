@@ -29,7 +29,7 @@ const NavBar = () => {
                     <Link to="/" className="nav__item__link">
                         <FontAwesomeIcon icon={faHome} />
                         <span className="nav__item__title">
-              Home
+                    Home
                         </span>
                     </Link>
                 </li>
