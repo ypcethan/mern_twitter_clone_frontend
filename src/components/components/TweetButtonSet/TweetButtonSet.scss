@@ -25,9 +25,12 @@
         }
     
         &--heart{
-            &:hover{
+             &:hover{
                 color:#E0255E ;
             } 
+            &--active{
+                color:#E0255E 
+            }
         }
         &--bookmark{
             &:hover{
@@ -57,3 +60,16 @@
     font-size: 13px;
     margin-left: 5px;
 }
+
+
+@keyframes slideUp {
+    from {
+      transform: translateY(0%);
+      opacity: 100%;
+    }
+  
+    to {
+      transform: translateY(-100%);
+      opacity: 0%;
+    }
+  }

@@ -7,6 +7,9 @@ import {
     faHeart,
     faBookmark,
 } from "@fortawesome/free-regular-svg-icons";
+import {
+    faHeart as fasHeart,
+} from "@fortawesome/free-solid-svg-icons";
 import ModalContainer from "../../components/ModalContainer/ModalContainer";
 import TweetInput from "../TweetInput/TweetInput";
 import {createComment,createLike} from "../../../redux/tweet/tweetAction";
@@ -17,6 +20,7 @@ const TweetButtonSet = ({tweet}) => {
     const [commentsCount, setCommentsCount] = useState(tweet.comments.length);
     const [likesCount , setLikesCount] = useState(tweet.likes.length);
     const user = useSelector(state=>state.auth.user);
+    const [userLiked, setUserLiked] = useState(tweet.likes.includes(user._id));
     const dispatch = useDispatch();
     const openModal = () => {
         setIsOpen(true);
@@ -31,7 +35,8 @@ const TweetButtonSet = ({tweet}) => {
         const baseUrl = "http://localhost:5000/v1/tweets";
         // dispatch(createLike(tweet._id));
         const response = await axios.post(`${baseUrl}/${tweet._id}/likes` );
-
+        console.log(response.data);
+        setUserLiked(response.data.tweet.likes.includes(user._id));
         setLikesCount(response.data.count);
     };
     return (
@@ -52,15 +57,16 @@ const TweetButtonSet = ({tweet}) => {
                     {commentsCount}
                 </span>
             </div>
-            <div className="tweet__button__icon__container
-            tweet__button__icon__container--heart" >
+            <div className={`tweet__button__icon__container
+            tweet__button__icon__container--heart ${userLiked ? "tweet__button__icon__container--heart--active" : "" }`} >
                 <FontAwesomeIcon 
-                    icon={faHeart}
+                    icon={userLiked ? fasHeart : faHeart}
                     className="tweet__button__icon
                     tweet__button__icon--heart"
                     onClick={handleLike}
                 /> 
-                <span className='tweet__button__count'>
+                <span className='tweet__button__count
+                '>
                     {likesCount}
                 </span>
             </div>
