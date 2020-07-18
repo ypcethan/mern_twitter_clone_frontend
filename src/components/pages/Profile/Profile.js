@@ -7,7 +7,7 @@ import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
 import TweetList from "../../components/TweetList/TweetList";
 import CommentList from "../../components/CommentList/CommentList";
 import { getUser } from "../../../redux/user/userAction";
-import {getAllTweetsFromUser, getAllUserComments} from "../../../redux/tweet/tweetAction";
+import {getAllTweetsFromUser, getAllUserComments,getAllUserLikes} from "../../../redux/tweet/tweetAction";
 import "./Profile.scss";
 
 const Profile = () => {
@@ -17,6 +17,7 @@ const Profile = () => {
     const user = useSelector((state) => state.user.user);
     const tweets = useSelector(state=>state.tweet.tweets);
     const commentedTweets = useSelector((state)=> state.tweet.commentedTweets);
+    const likedTweets = useSelector(state=>state.tweet.likedTweets);
     useEffect(() => {
         dispatch(getUser(userName));
 
@@ -25,6 +26,7 @@ const Profile = () => {
         if(user){
             dispatch(getAllTweetsFromUser(user._id));
             dispatch(getAllUserComments(user._id));
+            dispatch(getAllUserLikes(user._id));
         }
     },[user]);
 
@@ -37,6 +39,10 @@ const Profile = () => {
         case "comments":
             return (
                 <CommentList tweets={commentedTweets} />
+            );
+        case "likes":
+            return (
+                <TweetList tweets={likedTweets} />
             );
         }
     };

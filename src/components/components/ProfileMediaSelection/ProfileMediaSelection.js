@@ -26,20 +26,20 @@ const ProfileMediaSelection = ({setTab, selected}) => {
             >
         Tweets & Replies
             </div>
-            <div 
+            {/* <div 
                 className={`media__selection__item ${selected === "media"
                     ? "media__selection__item--active"
                     : ""}`}
                 name="media"
                 onClick={handleClick}>
         Media
-            </div>
+            </div> */}
             <div
             
                 className={`media__selection__item ${selected === "likes"
                     ? "media__selection__item--active"
                     : ""}`}
-                name="like"
+                name="likes"
                 onClick={handleClick}>
         Likes
             </div>
