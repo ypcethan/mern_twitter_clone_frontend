@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import ClipLoader from "react-spinners/ClipLoader";
 import ProfileHeader from "../../components/ProfileHeader/ProfileHeader";
 import ProfileMediaSelection from "../../components/ProfileMediaSelection/ProfileMediaSelection";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
@@ -14,6 +15,7 @@ const Profile = () => {
     const dispatch = useDispatch();
     const { userName } = useParams();
     const [tab, setTab] = useState("tweets");
+    const isLoading = useSelector(state=>state.tweet.loading);
     const user = useSelector((state) => state.user.user);
     const tweets = useSelector(state=>state.tweet.tweets);
     const commentedTweets = useSelector((state)=> state.tweet.commentedTweets);
@@ -26,22 +28,17 @@ const Profile = () => {
         if(user){
             switch(tab){
             case "tweets":
-                if (tweets.length===0){
-                    dispatch(getAllTweetsFromUser(user._id));
-                }
+                dispatch(getAllTweetsFromUser(user._id));
                 return;
             case "comments":
-                if(commentedTweets.length===0){
-                    dispatch(getAllUserComments(user._id));
-                }
+                dispatch(getAllUserComments(user._id));
                 return;
             case "likes":
-                if(likedTweets.length ===0){
-                    dispatch(getAllUserLikes(user._id));
-                }
+                dispatch(getAllUserLikes(user._id));
             }
         }
     },[user,tab]);
+
 
     const renderList = () => {
         switch(tab){
@@ -59,6 +56,14 @@ const Profile = () => {
             );
         }
     };
+    const spinner = (
+        <div className='spinner'>
+            <ClipLoader
+                size={150}
+                color="#1B91DA"
+            />
+        </div>
+    );
     return (
         <div className="profile__container">
             <ProfileHeader />
@@ -68,7 +73,8 @@ const Profile = () => {
                     <ProfileMediaSelection setTab={setTab} selected={tab} />
                 </>
             ) : "Loading"}
-            {renderList()}
+            {isLoading ? spinner : renderList()}
+            {/* {spinner} */}
             {/* <TweetList tweets={tweets}/> */}
         </div>
     );

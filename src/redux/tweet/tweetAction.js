@@ -1,6 +1,6 @@
 import axios from "axios";
 import {
-    GET_TWEET, CREATE_TWEET, UPDATE_TWEET, DELETE_TWEET, GET_ALL_TWEETS_FROM_USER, TWEET_ERROR, GET_RELEVENT_TWEETS, CREATE_COMMENT, GET_ALL_COMMENTS, CREATE_LIKE, GET_ALL_USER_COMMENTS, GET_ALL_USER_LIKES,
+    GET_TWEET, CREATE_TWEET, UPDATE_TWEET, DELETE_TWEET, GET_ALL_TWEETS_FROM_USER, TWEET_ERROR, GET_RELEVENT_TWEETS, CREATE_COMMENT, GET_ALL_COMMENTS, CREATE_LIKE, GET_ALL_USER_COMMENTS, GET_ALL_USER_LIKES, SET_LOADING,
 } from "./tweetType";
 
 const baseUrl = "http://localhost:5000/v1/tweets";
@@ -37,6 +37,10 @@ export const getReleventTweet = () => async (dispatch) => {
 
 export const getAllTweetsFromUser = (userId) => async (dispatch) => {
     try {
+        dispatch({
+            type:SET_LOADING,
+            payload:true
+        });
         const response = await axios.get(`${baseUrl}/${userId}/tweets`);
 
         dispatch({
@@ -101,6 +105,10 @@ export const getComments = (tweetId) => async (dispatch) => {
 
 export const getAllUserComments = (userId) => async (dispatch) => {
     try {
+        dispatch({
+            type:SET_LOADING,
+            payload:true
+        });
         const response = await axios.get(`${baseUrl}/user/${userId}/comments` );
         console.log("Comments");
         console.log(response.data);
@@ -134,6 +142,10 @@ export const createLike = (tweetId) => async (dispatch) => {
 
 export const getAllUserLikes= (userId) => async (dispatch) => {
     try {
+        dispatch({
+            type:SET_LOADING,
+            payload:true
+        });
         const response = await axios.get(`${baseUrl}/user/${userId}/likes` );
         console.log("Likes");
         console.log(response.data);
