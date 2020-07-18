@@ -24,11 +24,24 @@ const Profile = () => {
     }, [userName]);
     useEffect(()=> {
         if(user){
-            dispatch(getAllTweetsFromUser(user._id));
-            dispatch(getAllUserComments(user._id));
-            dispatch(getAllUserLikes(user._id));
+            switch(tab){
+            case "tweets":
+                if (tweets.length===0){
+                    dispatch(getAllTweetsFromUser(user._id));
+                }
+                return;
+            case "comments":
+                if(commentedTweets.length===0){
+                    dispatch(getAllUserComments(user._id));
+                }
+                return;
+            case "likes":
+                if(likedTweets.length ===0){
+                    dispatch(getAllUserLikes(user._id));
+                }
+            }
         }
-    },[user]);
+    },[user,tab]);
 
     const renderList = () => {
         switch(tab){
