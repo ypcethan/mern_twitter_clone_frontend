@@ -13,16 +13,46 @@
     font-size: 16px;
     padding:0.5rem;
     border-radius: 90px;
-    &:hover{
-        background-color: #E1EFFA;
-        color: $primary-color;
-    }
+
     transition: all 0.4s;
     &__container{
         display: flex;
         align-items: center;
+        &--comment{
+            &:hover{
+                color: $primary-color;
+            } 
+        }
+    
+        &--heart{
+            &:hover{
+                color:#E0255E ;
+            } 
+        }
+        &--bookmark{
+            &:hover{
+                color:#5FCC87;
+            }
+        }
+    }
+    &--comment{
+        &:hover{
+            background-color: #E1EFFA;
+        } 
+    }
+
+    &--heart{
+        &:hover{
+            background-color: #F4E4EB;
+        } 
+    }
+    &--bookmark{
+        &:hover{
+            background-color: #E3F2EB;
+        }
     }
 }
+
 .tweet__button__count{
     font-size: 13px;
     margin-left: 5px;

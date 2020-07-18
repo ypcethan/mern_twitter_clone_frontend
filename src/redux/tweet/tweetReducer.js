@@ -4,7 +4,8 @@ import {
     CREATE_COMMENT,
     GET_ALL_COMMENTS,
     GET_ALL_USER_COMMENTS,
-    GET_ALL_USER_LIKES
+    GET_ALL_USER_LIKES,
+    CREATE_LIKE
 } from "./tweetType";
 
 const initialState = {
@@ -13,9 +14,6 @@ const initialState = {
     comments:[],
     commentedTweets: [],
     likedTweets:[],
-    newlyAddedComment:null,
-    newCommentsCount:null,
-    newLikesCount:null,
     error: null,
 };
 
@@ -31,12 +29,14 @@ const reducer = (state = initialState, action) => {
             ...state, 
             commentedTweets: action.payload
         }; 
+    case CREATE_LIKE:
+        return {
+            ...state, 
+        };
     case CREATE_COMMENT:
         return {
             ...state,
-            newlyAddedComment: action.payload.comment,
             comments:[action.payload.comment,...state.comments],
-            newLikesCount:action.payload.count
         };
     case GET_ALL_COMMENTS:
         return {
