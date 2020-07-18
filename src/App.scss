@@ -13,6 +13,12 @@
   align-items: center;
   height: 100vh;
 }
+.profile__spinner{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
 
 .title__container{
   margin-bottom: 0.5rem;

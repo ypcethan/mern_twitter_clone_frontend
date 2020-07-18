@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import ClipLoader from "react-spinners/ClipLoader";
+import MoonLoader from "react-spinners/MoonLoader";
 import ProfileHeader from "../../components/ProfileHeader/ProfileHeader";
 import ProfileMediaSelection from "../../components/ProfileMediaSelection/ProfileMediaSelection";
 import ProfileInfo from "../../components/ProfileInfo/ProfileInfo";
@@ -57,9 +57,9 @@ const Profile = () => {
         }
     };
     const spinner = (
-        <div className='spinner'>
-            <ClipLoader
-                size={150}
+        <div className='profile__spinner'>
+            <MoonLoader
+                size={50}
                 color="#1B91DA"
             />
         </div>
@@ -74,7 +74,6 @@ const Profile = () => {
                 </>
             ) : "Loading"}
             {isLoading ? spinner : renderList()}
-            {/* {spinner} */}
             {/* <TweetList tweets={tweets}/> */}
         </div>
     );
