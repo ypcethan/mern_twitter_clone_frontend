@@ -18,9 +18,9 @@ import "./TweetButtonSet.scss";
 const TweetButtonSet = ({tweet}) => {
     const [modalIsOpen,setIsOpen] = useState(false);
     const [commentsCount, setCommentsCount] = useState(tweet.comments.length);
-    const [likesCount , setLikesCount] = useState(tweet.likes.length);
+    const [likesCount , setLikesCount] = useState(tweet.likedBy.length);
     const user = useSelector(state=>state.auth.user);
-    const [userLiked, setUserLiked] = useState(tweet.likes.includes(user._id));
+    const [userLiked, setUserLiked] = useState(tweet.likedBy.includes(user._id));
     const dispatch = useDispatch();
     const openModal = () => {
         setIsOpen(true);
@@ -36,7 +36,7 @@ const TweetButtonSet = ({tweet}) => {
         // dispatch(createLike(tweet._id));
         const response = await axios.post(`${baseUrl}/${tweet._id}/likes` );
         console.log(response.data);
-        setUserLiked(response.data.tweet.likes.includes(user._id));
+        setUserLiked(response.data.tweet.likedBy.includes(user._id));
         setLikesCount(response.data.count);
     };
     return (
