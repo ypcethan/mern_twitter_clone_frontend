@@ -1,62 +1,50 @@
-import React,{useState, useEffect} from "react";
-import {useSelector} from "react-redux";
-import io from "socket.io-client";
-
-let socket;
+import React,{useEffect, useState} from "react";
+import {useSelector ,useDispatch} from "react-redux";
+import ChatRoom from "../../components/ChatRoom/ChatRoom";
+import {getFollowed} from "../../../redux/user/userAction";
+import "./Message.scss";
 const Messages = () => {
-    // const [socket, setSocket] = useState("");
-    // let socket;
-    const [content, setContent] = useState("");
-    const [messages , setMessages] = useState([]);
+    const dispatch = useDispatch();
+    const followedUsers = useSelector(state=>state.user.followedUsers);
+    const [searchName, setSearchName] = useState("");
 
-    const user = useSelector(state=>state.auth.user);
-    const room = "room1";
-    const name = user.userName;
+    const [listToRender, setListToRender] = useState(followedUsers);
     useEffect(()=> {
-        const server = "http://localhost:5000";
-        // setSocket(io(server )); 
-        socket = io(server);
-
-        socket.emit("join" , {name, room}, (error)=> {
-            console.log(name);
-            console.log(room);
-            console.log("join");
-            if (error){
-                alert(error);
-            }
-        });
-        return () => {
-            socket.emit("disconnect");
-            socket.off();
-        };
-    } , []);
-    useEffect(()=> {
-        socket.on("message", msg=> {
-            setMessages((message)=> [...message, msg]);
-        });
+        dispatch(getFollowed());
     },[]);
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Submit");
-        socket.emit("sendMessage", {
-            content,
-            name,
-            room
-        });
-        setContent("");
-    };
+    useEffect(()=> {
+        if (searchName.length > 0){
+            const re = new RegExp(`${searchName}`, "ig");
+            console.log(re);
+            setListToRender(followedUsers.filter(user=>user.name.match(re) || user.userName.match(re)));
+        }
+        else{
+            setListToRender(followedUsers);
+        }
+        console.log(listToRender);
+    }, [searchName, followedUsers]);
     return (
         <div>
-    Message
-            <form onSubmit={handleSubmit}>
-                <input type="text" value={content}
-                    onChange={e=> setContent(e.target.value )}/>
-            </form>
-            {messages.map(m=> (
-                <div> {m.user}, {m.text} </div> 
-            ))}
+            <h1>Message page</h1>
+            <input type="text" value={searchName} onChange={e=>setSearchName(e.target.value)}/>
+            <ul className='message__followed__list'>
+                { listToRender.map(user=> 
+                    <div className='message__followed__item__container'
+                        key={user._id}> 
+                        <div className='message__followed__avatar'>
+                            <img src={user.avatarUrl} alt=""/>
+                        </div>
+                        <div className={"message__followed__info"}>
+                            <div> 
+                                {user.name} 
+                            </div>
+                            <div className="message__followed__userName">{user.userName}</div>
+                        </div>
+                    </div>
+                )  }
+            </ul>
         </div>
-    );};
+    );
+};
 
 export default Messages;
