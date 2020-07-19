@@ -15,7 +15,6 @@ const Messages = () => {
     useEffect(()=> {
         if (searchName.length > 0){
             const re = new RegExp(`${searchName}`, "ig");
-            console.log(re);
             setListToRender(followedUsers.filter(user=>user.name.match(re) || user.userName.match(re)));
         }
         else{
@@ -25,8 +24,14 @@ const Messages = () => {
     }, [searchName, followedUsers]);
     return (
         <div>
-            <h1>Message page</h1>
-            <input type="text" value={searchName} onChange={e=>setSearchName(e.target.value)}/>
+            <div className="title__container">
+                <div className="page__title">
+              Message
+                </div>
+            </div>
+            <input type="text" value={searchName} onChange={e=>setSearchName(e.target.value)} placeholder='Search user'
+                className='message__search'
+            />
             <ul className='message__followed__list'>
                 { listToRender.map(user=> 
                     <div className='message__followed__item__container'
