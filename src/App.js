@@ -4,6 +4,7 @@ import { BrowserRouter, Switch } from "react-router-dom";
 import Home from "./components/pages/Home/Home";
 import Bookmarks from "./components/pages/Bookmarks/Bookmarks";
 import Messages from "./components/pages/Messages/Messages";
+import ChatRoom from "./components/pages/ChatRoom/ChatRoom";
 import Profile from "./components/pages/Profile/Profile";
 import ProfileEdit from "./components/pages/ProfileEdit/ProfileEdit";
 import Register from "./components/pages/Register/Register";
@@ -50,6 +51,7 @@ function App() {
                             layout={MainLayout}
                         />
                         <AppRoute path="/messages" exact component={Messages} layout={MainLayout} />
+                        <AppRoute path="/messages/:userOneId/:userTwoId" exact component={ChatRoom} layout={MainLayout} />
                         <AppRoute path="/profile/edit" exact component={ProfileEdit} layout={MainLayout} />
                         <AppRoute path="/profile/:userName" component={Profile} layout={MainLayout} />
                         <AppRoute path="/:userName/status/:id" component={Tweet} layout={MainLayout} />

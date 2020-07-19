@@ -19,6 +19,7 @@
     }
 
     &__item__container {
+        text-decoration: none;
         padding:0.8rem;
         display: flex;
         border-bottom: 2px solid $light-gray;
@@ -43,7 +44,9 @@
 
     &__userName{
         color:gray;
-       
+    }
+    &__name{
+        color: black;
     }
 
 }

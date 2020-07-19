@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from "react";
 import {useSelector} from "react-redux";
+import {useParams} from "react-router-dom";
 import io from "socket.io-client";
 
 let socket;
@@ -8,9 +9,10 @@ const CharRoom = () => {
     // let socket;
     const [content, setContent] = useState("");
     const [messages , setMessages] = useState([]);
+    const {userOneId, userTwoId} = useParams();
 
     const user = useSelector(state=>state.auth.user);
-    const room = "room1";
+    const room = userOneId + "__"+ userTwoId;
     const name = user.userName;
     useEffect(()=> {
         const server = "http://localhost:5000";
@@ -48,7 +50,11 @@ const CharRoom = () => {
     };
     return (
         <div>
-    Message
+            <div className="title__container">
+                <div className="page__title">
+              Message
+                </div>
+            </div>
             <form onSubmit={handleSubmit}>
                 <input type="text" value={content}
                     onChange={e=> setContent(e.target.value )}/>

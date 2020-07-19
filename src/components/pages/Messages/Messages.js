@@ -1,13 +1,13 @@
 import React,{useEffect, useState} from "react";
 import {useSelector ,useDispatch} from "react-redux";
-import ChatRoom from "../../components/ChatRoom/ChatRoom";
+import {Link} from "react-router-dom";
 import {getFollowed} from "../../../redux/user/userAction";
 import "./Message.scss";
 const Messages = () => {
     const dispatch = useDispatch();
     const followedUsers = useSelector(state=>state.user.followedUsers);
+    const authUser = useSelector(state=>state.auth.user);
     const [searchName, setSearchName] = useState("");
-
     const [listToRender, setListToRender] = useState(followedUsers);
     useEffect(()=> {
         dispatch(getFollowed());
@@ -34,18 +34,20 @@ const Messages = () => {
             />
             <ul className='message__followed__list'>
                 { listToRender.map(user=> 
-                    <div className='message__followed__item__container'
+                    <Link 
+                        to={`/messages/${authUser._id}/${user._id}`}
+                        className='message__followed__item__container'
                         key={user._id}> 
                         <div className='message__followed__avatar'>
                             <img src={user.avatarUrl} alt=""/>
                         </div>
                         <div className={"message__followed__info"}>
-                            <div> 
+                            <div className="message__followed__name"> 
                                 {user.name} 
                             </div>
                             <div className="message__followed__userName">{user.userName}</div>
                         </div>
-                    </div>
+                    </Link>
                 )  }
             </ul>
         </div>
