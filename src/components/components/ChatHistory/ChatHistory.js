@@ -1,6 +1,7 @@
 import React from "react";
 import momentTZ from "moment-timezone";
 import moment from "moment";
+
 import "./ChatHistory.scss";
 function formatTime(time) {
   const convertedTime = momentTZ(time).tz("Asia/Taipei").format();
@@ -8,7 +9,7 @@ function formatTime(time) {
 
 }
 const ChatHistory = ({messages ,user ,followedUser}) => {
-    
+ 
   return (
     <div >
       {messages.map(m=> (
@@ -33,9 +34,7 @@ const ChatHistory = ({messages ,user ,followedUser}) => {
               {
                 formatTime(m.createdAt)
               }
-            
             </div>
-         
           </div>
         </div>
       ))} 

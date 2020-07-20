@@ -4,7 +4,6 @@ import {useParams} from "react-router-dom";
 import io from "socket.io-client";
 import ChatHistory from "../../components/ChatHistory/ChatHistory";
 import "./ChatRoom.scss";
-
 let socket;
 
 const ChatRoom = (props) => {
@@ -15,7 +14,6 @@ const ChatRoom = (props) => {
   const [messages , setMessages] = useState([]);
   const { userTwoId} = useParams();
   const userOneId = user._id;
-
   let room;
   if (userOneId < userTwoId){
     room = userOneId + "__"+ userTwoId;
@@ -72,6 +70,7 @@ const ChatRoom = (props) => {
         </div>
       </div>
       <div className='chat__room__container' >
+
         <ChatHistory messages={messages} user={user} followedUser={followedUser}/>
 
         <form 
