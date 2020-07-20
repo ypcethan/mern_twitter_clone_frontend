@@ -74,7 +74,7 @@ const ChatRoom = (props) => {
 
         <form 
           onSubmit={handleSubmit} 
-          className={`chat__room__form ${ focused ? "chat__room__form--active":"" }`}>
+          className={`chat__room__form ${ focused ? "chat__room__form--focus":"chat__room__form--blur" }`}>
           <input 
             placeholder='Reply'
             type='text'
