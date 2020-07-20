@@ -1,0 +1,22 @@
+.chat__room{
+
+    &__container{
+        height: 100vh;
+    }
+    &__form{
+        position: sticky;
+        bottom: 0px;
+        background-color: #6dc2f6;
+        padding: 1rem;
+    }
+
+    &__input{
+        background-color: white;
+        border-radius: 20px;
+        margin-left: 1rem;
+        padding:0.5rem 0.8rem;
+        border: 0px;
+        outline: none;
+        width: 80%;
+    }
+}

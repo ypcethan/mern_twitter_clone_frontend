@@ -1,0 +1,43 @@
+@import "../../../styles/base";
+.chat__response{
+    &__container{
+        display: flex;
+        margin-top: 1.5rem;
+    }
+
+    &__avatar{
+        img{
+            width:40px;
+            border-radius: 100%;
+        }
+    }
+
+    &__content{
+        padding: 0.75rem 0.5rem;
+        border-radius: 30px;;
+  
+        position: relative;
+        bottom: 25px;
+    }
+}
+.chat__response__container {
+    &--left{
+       .chat__response__content{
+            margin-left: 0.5rem ;
+            background-color: #22aaff;
+            color:white;
+            border-bottom-left-radius: 0px;
+       } 
+    }
+
+    &--right{
+        flex-direction: row-reverse;
+        .chat__response__content{
+             margin-right: 0.5rem ;
+             background-color: $light-gray;
+             color: #22aaff;
+             border-bottom-right-radius: 0px;
+
+        } 
+     }
+}

@@ -18,48 +18,48 @@ import store from "./redux";
 import "./App.scss";
 
 function App() {
-    return (
-        <Provider store={store}>
-            <BrowserRouter>
-                <div className="app">
-                    <Alert />
-                    <Switch>
-                        <AppRoute
-                            path="/"
-                            exact
-                            component={Home}
-                            layout={MainLayout}
-                        />
-                        <AppRoute
-                            path="/register"
-                            exact
-                            component={Register}
-                            isPrivate={false}
-                            layout={AuthLayout}
-                        />
-                        <AppRoute
-                            path="/login"
-                            exact
-                            component={Login}
-                            isPrivate={false}
-                            layout={AuthLayout}
-                        />
-                        <AppRoute
-                            path="/bookmarks"
-                            exact
-                            component={Bookmarks}
-                            layout={MainLayout}
-                        />
-                        <AppRoute path="/messages" exact component={Messages} layout={MainLayout} />
-                        <AppRoute path="/messages/:userOneId/:userTwoId" exact component={ChatRoom} layout={MainLayout} />
-                        <AppRoute path="/profile/edit" exact component={ProfileEdit} layout={MainLayout} />
-                        <AppRoute path="/profile/:userName" component={Profile} layout={MainLayout} />
-                        <AppRoute path="/:userName/status/:id" component={Tweet} layout={MainLayout} />
-                    </Switch>
-                </div>
-            </BrowserRouter>
-        </Provider>
-    );
+  return (
+    <Provider store={store}>
+      <BrowserRouter>
+        <div className="app">
+          <Alert />
+          <Switch>
+            <AppRoute
+              path="/"
+              exact
+              component={Home}
+              layout={MainLayout}
+            />
+            <AppRoute
+              path="/register"
+              exact
+              component={Register}
+              isPrivate={false}
+              layout={AuthLayout}
+            />
+            <AppRoute
+              path="/login"
+              exact
+              component={Login}
+              isPrivate={false}
+              layout={AuthLayout}
+            />
+            <AppRoute
+              path="/bookmarks"
+              exact
+              component={Bookmarks}
+              layout={MainLayout}
+            />
+            <AppRoute path="/messages" exact component={Messages} layout={MainLayout} />
+            <AppRoute path="/messages/:userTwoId" exact component={ChatRoom} layout={MainLayout} />
+            <AppRoute path="/profile/edit" exact component={ProfileEdit} layout={MainLayout} />
+            <AppRoute path="/profile/:userName" component={Profile} layout={MainLayout} />
+            <AppRoute path="/:userName/status/:id" component={Tweet} layout={MainLayout} />
+          </Switch>
+        </div>
+      </BrowserRouter>
+    </Provider>
+  );
 }
 
 export default App;
