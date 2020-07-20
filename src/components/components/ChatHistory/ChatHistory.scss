@@ -12,12 +12,19 @@
         }
     }
 
+    &__content__container{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        bottom: 25px;
+    }
+    &__time{
+        color: gray;
+        font-size: 0.75rem;
+    }
     &__content{
         padding: 0.75rem 0.5rem;
         border-radius: 30px;;
-  
-        position: relative;
-        bottom: 25px;
     }
 }
 .chat__response__container {
@@ -28,6 +35,9 @@
             color:white;
             border-bottom-left-radius: 0px;
        } 
+       .chat__response__time{
+            margin-left: 0.5rem ;
+        }
     }
 
     &--right{
@@ -39,5 +49,8 @@
              border-bottom-right-radius: 0px;
 
         } 
+        .chat__response__time{
+            margin-right: 0.5rem ;
+        }
      }
 }

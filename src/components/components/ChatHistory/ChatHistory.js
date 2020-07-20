@@ -1,6 +1,12 @@
 import React from "react";
+import momentTZ from "moment-timezone";
 import moment from "moment";
 import "./ChatHistory.scss";
+function formatTime(time) {
+  const convertedTime = momentTZ(time).tz("Asia/Taipei").format();
+  return moment(convertedTime).fromNow(); 
+
+}
 const ChatHistory = ({messages ,user ,followedUser}) => {
     
   return (
@@ -18,9 +24,18 @@ const ChatHistory = ({messages ,user ,followedUser}) => {
               <img src={followedUser.avatarUrl} alt=""/>
             )}
           </div>
-          <div className='chat__response__content
+          <div className='chat__response__content__container'>
+            <div className='chat__response__content
           '>
-            {m.content}
+              {m.content}
+            </div>
+            <div className='chat__response__time'>
+              {
+                formatTime(m.createdAt)
+              }
+            
+            </div>
+         
           </div>
         </div>
       ))} 

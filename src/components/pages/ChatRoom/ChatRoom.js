@@ -3,10 +3,10 @@ import {useSelector } from "react-redux";
 import {useParams} from "react-router-dom";
 import io from "socket.io-client";
 import ChatHistory from "../../components/ChatHistory/ChatHistory";
-import {} from "../../../redux/user/userAction";
 import "./ChatRoom.scss";
 
 let socket;
+
 const ChatRoom = (props) => {
   const followedUser = props.history.location.followedUser;
   const user = useSelector(state=>state.auth.user);
@@ -43,6 +43,8 @@ const ChatRoom = (props) => {
   } , []);
   useEffect(()=> {
     socket.on("message", msg=> {
+      console.log("Message");
+      console.log(msg);
       if (Array.isArray(msg)){
         setMessages((message)=> [...message, ...msg]);
       }
@@ -58,7 +60,7 @@ const ChatRoom = (props) => {
       content,
       userName: user.userName,
       room,
-      createdBy: user._id
+      createdBy: user._id,
     });
     setContent("");
   };
