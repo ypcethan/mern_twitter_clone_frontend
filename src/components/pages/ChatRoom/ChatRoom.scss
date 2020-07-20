@@ -1,13 +1,19 @@
 .chat__room{
 
     &__container{
-        height: 100vh;
+        min-height: 100vh;
+       display: flex; 
+       flex-direction: column;
+       justify-content: space-between;
     }
     &__form{
         position: sticky;
         bottom: 0px;
         background-color: #6dc2f6;
         padding: 1rem;
+        &--active{
+            background-color: red;
+        }
     }
 
     &__input{

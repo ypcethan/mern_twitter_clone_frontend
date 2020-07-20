@@ -1,5 +1,5 @@
 import React,{useState, useEffect} from "react";
-import {useSelector, useDispatch} from "react-redux";
+import {useSelector } from "react-redux";
 import {useParams} from "react-router-dom";
 import io from "socket.io-client";
 import ChatHistory from "../../components/ChatHistory/ChatHistory";
@@ -9,8 +9,8 @@ import "./ChatRoom.scss";
 let socket;
 const ChatRoom = (props) => {
   const followedUser = props.history.location.followedUser;
-  const dispatch = useDispatch();
   const user = useSelector(state=>state.auth.user);
+  const [focused, setFocused] = useState(false);
   const [content, setContent] = useState("");
   const [messages , setMessages] = useState([]);
   const { userTwoId} = useParams();
@@ -63,21 +63,25 @@ const ChatRoom = (props) => {
     setContent("");
   };
   return (
-    <div>
+    <div >
       <div className="title__container">
         <div className="page__title">
               Message
         </div>
       </div>
-      <div className='chat__room__container'>
+      <div className='chat__room__container' >
         <ChatHistory messages={messages} user={user} followedUser={followedUser}/>
-        <form onSubmit={handleSubmit} 
-          className='chat__room__form'>
+
+        <form 
+          onSubmit={handleSubmit} 
+          className={`chat__room__form ${ focused ? "chat__room__form--active":"" }`}>
           <input 
             placeholder='Reply'
             type='text'
             value={content}
             className='chat__room__input'
+            onBlur={()=>setFocused(false)}
+            onFocus={()=>setFocused(true)}
             onChange={e=> setContent(e.target.value )} />
         </form>
       </div>
