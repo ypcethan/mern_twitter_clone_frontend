@@ -1,13 +1,6 @@
 import React from "react";
-import momentTZ from "moment-timezone";
-import moment from "moment";
-
+import formatTime from "../../../utils/formatTime";
 import "./ChatHistory.scss";
-function formatTime(time) {
-  const convertedTime = momentTZ(time).tz("Asia/Taipei").format();
-  return moment(convertedTime).fromNow(); 
-
-}
 const ChatHistory = ({messages ,user ,followedUser}) => {
  
   return (

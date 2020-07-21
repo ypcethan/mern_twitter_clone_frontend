@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faDove,
-} from '@fortawesome/free-solid-svg-icons';
-import { useForm } from 'react-hook-form';
-import { useDispatch, useSelector } from 'react-redux';
-import { registerUser, clearError } from '../../../redux/auth/authAction';
-import { setAlert } from '../../../redux/alert/alertAction';
-import './Register.scss';
+} from "@fortawesome/free-solid-svg-icons";
+import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
+import { registerUser, clearError } from "../../../redux/auth/authAction";
+import { setAlert } from "../../../redux/alert/alertAction";
+import "./Register.scss";
 
 const Register = (props) => {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
-  const [userName, setUserName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const error = useSelector((state) => state.auth.error);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const { register, handleSubmit, errors } = useForm();
@@ -30,10 +30,10 @@ const Register = (props) => {
   };
   useEffect(() => {
     if (isAuthenticated) {
-      props.history.push('/');
+      props.history.push("/");
     }
     if (error) {
-      dispatch(setAlert(error, 'danger'));
+      dispatch(setAlert(error, "danger"));
       dispatch(clearError());
     }
   }, [error, isAuthenticated]);
@@ -58,7 +58,7 @@ const Register = (props) => {
             ref={register({
               required: {
                 value: true,
-                message: 'Name is required',
+                message: "Name is required",
               },
             })}
           />
@@ -76,7 +76,7 @@ const Register = (props) => {
             ref={register({
               required: {
                 value: true,
-                message: 'User name is required',
+                message: "User name is required",
               },
             })}
           />
@@ -94,11 +94,11 @@ const Register = (props) => {
             ref={register({
               required: {
                 value: true,
-                message: 'Email is required',
+                message: "Email is required",
               },
               pattern: {
                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: 'Enter a valid e-mail address',
+                message: "Enter a valid e-mail address",
               },
             })}
           />
@@ -107,7 +107,7 @@ const Register = (props) => {
         <div className="form__group">
           <label htmlFor="password" className="form__label">Password</label>
           <input
-            type="text"
+            type="password"
             name="password"
             id="password"
             className="form__input"
@@ -116,11 +116,11 @@ const Register = (props) => {
             ref={register({
               required: {
                 value: true,
-                message: 'Password is required',
+                message: "Password is required",
               },
               minLength: {
                 value: 6,
-                message: 'Password should be at least 6 characters long',
+                message: "Password should be at least 6 characters long",
               },
             })}
           />

@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import moment from "moment";
 import TweetButtonSet from "../../components/TweetButtonSet/TweetButtonSet";
+import formatTime from "../../../utils/formatTime";
 import "./TweetItem.scss";
-
 const TweetItem = ({ tweet , hasButtonSet}) => (
   <div  className="tweet__item__container">
     <div className="tweet__item__avatar__container">
@@ -18,7 +17,7 @@ const TweetItem = ({ tweet , hasButtonSet}) => (
           <span className="tweet__item__username">
                         @{tweet.createdBy.userName}
             <span className="dot">&#183;</span>
-            {moment(tweet.updatedAt, "YYYYMMDD").fromNow() }
+            {formatTime(tweet.createdAt, "YYYYMMDD") }
           </span>
         </div>
 

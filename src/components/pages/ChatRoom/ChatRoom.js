@@ -23,8 +23,10 @@ const ChatRoom = (props) => {
   }
   const name = user.userName;
   useEffect(()=> {
-    const server = "http://localhost:5000";
-    socket = io(server);
+    // const server = "http://localhost:5000";
+    const server = process.env.REACT_APP_BACKEND_ROOT;
+    socket = io(server, {path:"/twitter/socket"});
+    // socket = io(server);
 
     socket.emit("join" , {name, room}, (error)=> {
       if (error){
