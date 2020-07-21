@@ -4,16 +4,22 @@
         padding: 0px;
     }
 
-    &__item__container {
+    &__item__container{
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid $light-gray;
+        &:hover{
+            background-color: #EDF0F2;
+        }
+        transition: background-color 0.3s;
+    }
+    &__item {
         cursor: pointer;
         text-decoration: none;
         padding:0.8rem;
         display: flex;
-        border-bottom: 2px solid $light-gray;
-        &:hover{
-            background-color: #ebf1f5;
-        }
-        transition: background-color 0.3s;
     }
 
     &__avatar{
@@ -21,7 +27,7 @@
             width: 50px;
             border-radius:100%;
         }
-        margin-right: 1rem;
+        margin-right: 0.5rem;
     }
 
     &__info{
@@ -31,9 +37,11 @@
 
     &__userName{
         color:gray;
+        font-size: 12px;
     }
     &__name{
         color: black;
+        font-size: 14px;
     }
 
 }

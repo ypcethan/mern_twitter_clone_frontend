@@ -1,0 +1,17 @@
+.follow__user__btn{
+    cursor: pointer;
+    text-decoration: none;
+    align-self: flex-end;
+    padding: 0.5rem 1rem;
+    border: 1px solid #1FA1F1;
+    outline: none;
+    background-color: white;
+    color: #1FA1F1;
+    font-size: 15px;
+    border-radius: 90px;
+    font-weight: 600;
+    &:hover{
+        background-color: #DCE8F2;
+    }
+    transition: background-color 0.4s;
+}
