@@ -18,7 +18,7 @@ const SideBar = () => {
 
   return (
     <div className="side-bar__container">
-      <div className={`side-bar__search ${searching ? "side-bar__search--active" : ""}`}>
+      {/* <div className={`side-bar__search ${searching ? "side-bar__search--active" : ""}`}>
         <FontAwesomeIcon icon={faSearch} />
         <input
           type="text"
@@ -27,7 +27,7 @@ const SideBar = () => {
           onFocus={() => setSearching(true)}
           onBlur={() => setSearching(false)}
         />
-      </div>
+      </div> */}
       {/* <div className="side-bar__content__container">
         <div className="title">
           Trend for you
