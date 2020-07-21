@@ -1,24 +1,11 @@
 @import "../../../styles/base";
-.message__search {
-    border:1px solid $primary-color;
-    outline: none;
-    border-radius: 20px;
-    width: 70%;
-    padding: 0.5rem 0.8rem;
-    margin-left: 0.5rem;
-    background-color: rgb(227, 248, 255);
-    &:focus{
-        background-color: #c5e9ff;
-    }
-    transition: background-color 0.3s;
-}
-
-.message__followed{
+.avatar__followed{
     &__list{
         padding: 0px;
     }
 
     &__item__container {
+        cursor: pointer;
         text-decoration: none;
         padding:0.8rem;
         display: flex;

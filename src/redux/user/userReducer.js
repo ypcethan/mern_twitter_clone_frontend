@@ -1,13 +1,19 @@
-import { GET_USER, ERROR, GET_FOLLOWED } from "./userType";
+import { GET_USER, GET_USERS, ERROR, GET_FOLLOWED } from "./userType";
 
 const initialState = {
   user: null,
   error: null,
-  followedUsers:[]
+  followedUsers:[],
+  recommandedUsers: []
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+  case GET_USERS:
+    return {
+      ...state, 
+      recommandedUsers:action.payload
+    };
   case GET_FOLLOWED:
     return {
       ...state,

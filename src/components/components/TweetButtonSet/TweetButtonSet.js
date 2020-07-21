@@ -71,7 +71,7 @@ const TweetButtonSet = ({tweet}) => {
           {likesCount}
         </span>
       </div>
-      <div  className="tweet__button__icon__container
+      {/* <div  className="tweet__button__icon__container
             tweet__button__icon__container--bookmark" >
         <FontAwesomeIcon 
           icon={faBookmark}
@@ -81,7 +81,7 @@ const TweetButtonSet = ({tweet}) => {
         <span className='tweet__button__count'>
           {tweet.comments.length}
         </span>
-      </div>
+      </div> */}
       <ModalContainer modalIsOpen={modalIsOpen} closeModal={closeModal}>
         <TweetInput 
           user={user} 
