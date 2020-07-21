@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser, clearError } from "../../../redux/auth/authAction";
 import { setAlert } from "../../../redux/alert/alertAction";
+import {useHistory} from "react-router-dom";
 import "./ProfileEdit.scss";
 
 const ProfileEdit = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.auth.user);
   const error = useSelector((state) => state.auth.error);
+  const [submitted, setSubmitted] = useState(false);
   const [name, setName] = useState(userData.name);
   const [email, setEmail] = useState(userData.email);
   const [userName, setUserName] = useState(userData.userName);
@@ -28,6 +31,7 @@ const ProfileEdit = () => {
     formData.append("email", email);
     formData.append("id", userData._id);
     dispatch(updateUser(formData, userData._id));
+    setSubmitted(true);
   };
 
   useEffect(() => {
@@ -35,7 +39,10 @@ const ProfileEdit = () => {
       dispatch(setAlert(error, "danger"));
       dispatch(clearError());
     }
-  }, [error]);
+    else if (submitted){
+      history.push(`/profile/${userData.userName}`);
+    }
+  }, [error , submitted]);
 
   return (
     <div className="profile__edit__container">

@@ -23,7 +23,9 @@ const Profile = () => {
   const likedTweets = useSelector(state=>state.tweet.likedTweets);
   useEffect(() => {
     dispatch(getUser(userName));
-
+  }, []);
+  useEffect(() => {
+    dispatch(getUser(userName));
   }, [userName]);
   useEffect(()=> {
     if(user){

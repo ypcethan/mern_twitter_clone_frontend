@@ -11,7 +11,7 @@ import {
   faDove,
   faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link , useLocation} from "react-router-dom";
 import { logout } from "../../../redux/auth/authAction";
 import ModalContainer from "../../components/ModalContainer/ModalContainer";
 import TweetInput from "../../components/TweetInput/TweetInput";
@@ -23,6 +23,7 @@ const NavBar = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
 
+  const {pathname} = useLocation();
   const onLogOut = () => {
     dispatch(logout());
   };
@@ -35,10 +36,13 @@ const NavBar = () => {
   const submitTweet = (data) => {
     dispatch(createTweet(data));
   };
+  console.log(pathname);
   const authLinks = (
     <>
       <ul className="nav__list">
-        <li className="nav__item nav__item--active">
+        <li className={`nav__item ${pathname.match(/\/$/) ? 
+          "nav__item--active" : ""
+        }`}>
           <Link to="/" className="nav__item__link">
             <FontAwesomeIcon icon={faHome} />
             <span className="nav__item__title">
@@ -52,7 +56,9 @@ const NavBar = () => {
             <span className="nav__item__title">Explore</span>
           </Link>
         </li> */}
-        <li className="nav__item">
+        <li className={`nav__item ${pathname.match(/\/messages/) ? 
+          "nav__item--active" : ""
+        }`}>
           <Link to="/messages" className="nav__item__link">
             <FontAwesomeIcon icon={faEnvelope} />
             <span className="nav__item__title">Messages</span>
@@ -64,7 +70,10 @@ const NavBar = () => {
             <span className="nav__item__title">Bookmarks</span>
           </Link>
         </li> */}
-        <li className="nav__item">
+        
+        <li className={`nav__item ${pathname.match(/\/profile/) ? 
+          "nav__item--active" : ""
+        }`}>
           <Link to={`/profile/${user ? user.userName : ""}`} className="nav__item__link">
             <FontAwesomeIcon icon={faUser} />
             <span className="nav__item__title">Profile</span>
