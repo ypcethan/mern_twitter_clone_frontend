@@ -1,7 +1,9 @@
 import axios from "axios";
 import { GET_USER, ERROR, GET_FOLLOWED } from "./userType";
 
-const baseUrl = "http://localhost:5000/v1/users";
+// const baseUrl = "http://localhost:5000/v1/users";
+const backEnd = process.env.REACT_APP_BACKEND_URL;
+const baseUrl = backEnd + "/v1/users";
 export const getUser = (userName) => async (dispatch) => {
   try {
     const response = await axios.get(`${baseUrl}/${userName}`);

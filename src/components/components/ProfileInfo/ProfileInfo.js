@@ -5,11 +5,12 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import moment from "moment";
 import "./ProfileInfo.scss";
 
 const ProfileInfo = ({ user , authUser}) => {
     
-  const [follow, setFollow] = useState(authUser.follows.includes(user._id) );
+  const [hasFollowed, setHasFollowed] = useState(authUser.follows.includes(user._id) );
   const canEdit = authUser._id === user._id;
   const handleFollow = async () => {
     const baseUrl = process.env.REACT_APP_BACKEND_URL;
@@ -18,10 +19,10 @@ const ProfileInfo = ({ user , authUser}) => {
     console.log("Follows");
     console.log(response.data);
     if (response.data.action === "unfollow"){
-      setFollow(true);
+      setHasFollowed(false);
     }
     else if (response.data.action === "follow"){
-      setFollow(false);
+      setHasFollowed(true);
     }
   };
 
@@ -45,7 +46,7 @@ const ProfileInfo = ({ user , authUser}) => {
           ): (
             <button className="profile__content__setup__btn" onClick={handleFollow} >
               {
-                follow ? "Follow" : "Unfollow"
+                hasFollowed ? "Unfollow" : "Follow"
               }
             </button>  
           )
@@ -59,15 +60,16 @@ const ProfileInfo = ({ user , authUser}) => {
           </div>
           <div className="profile__content__joindate">
             <FontAwesomeIcon icon={faCalendarAlt} className="profile__content__joinicon" />
-          Joined Novenber 2017
+          Joined &nbsp;
+            {moment(user.createdAy).format("MMMM YYYY")  }
           </div>
           <div className="profile__content__follow">
             <div className="profile__content__follow__item">
-              <span className="profile__content__follow__count">63</span>
+              <span className="profile__content__follow__count">{user.follows.length}</span>
             Following
             </div>
             <div className="profile__content__follow__item">
-              <span className="profile__content__follow__count">3</span>
+              <span className="profile__content__follow__count">{user.followedBy.length}</span>
             Followers
             </div>
           </div>

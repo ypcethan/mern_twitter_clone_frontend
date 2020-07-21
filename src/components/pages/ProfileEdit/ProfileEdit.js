@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { updateUser, clearError } from '../../../redux/auth/authAction';
-import { setAlert } from '../../../redux/alert/alertAction';
-import './ProfileEdit.scss';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { updateUser, clearError } from "../../../redux/auth/authAction";
+import { setAlert } from "../../../redux/alert/alertAction";
+import "./ProfileEdit.scss";
 
 const ProfileEdit = () => {
   const dispatch = useDispatch();
@@ -18,21 +18,21 @@ const ProfileEdit = () => {
     e.preventDefault();
     const formData = new FormData();
     if (avatar) {
-      formData.append('avatar', avatar);
+      formData.append("avatar", avatar);
     }
     if (coverImage) {
-      formData.append('coverImage', coverImage);
+      formData.append("coverImage", coverImage);
     }
-    formData.append('name', name);
-    formData.append('userName', userName);
-    formData.append('email', email);
-    formData.append('id', userData._id);
+    formData.append("name", name);
+    formData.append("userName", userName);
+    formData.append("email", email);
+    formData.append("id", userData._id);
     dispatch(updateUser(formData, userData._id));
   };
 
   useEffect(() => {
     if (error) {
-      dispatch(setAlert(error, 'danger'));
+      dispatch(setAlert(error, "danger"));
       dispatch(clearError());
     }
   }, [error]);

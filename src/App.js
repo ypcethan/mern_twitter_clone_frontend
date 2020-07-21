@@ -44,12 +44,12 @@ function App() {
               isPrivate={false}
               layout={AuthLayout}
             />
-            <AppRoute
+            {/* <AppRoute
               path="/bookmarks"
               exact
               component={Bookmarks}
               layout={MainLayout}
-            />
+            /> */}
             <AppRoute path="/messages" exact component={Messages} layout={MainLayout} />
             <AppRoute path="/messages/:userTwoId" exact component={ChatRoom} layout={MainLayout} />
             <AppRoute path="/profile/edit" exact component={ProfileEdit} layout={MainLayout} />
