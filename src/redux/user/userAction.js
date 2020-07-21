@@ -24,8 +24,6 @@ export const getUser = (userName) => async (dispatch) => {
 export const getUsers = () => async (dispatch) => {
   try {
     const response = await axios.get(`${baseUrl}/recommanded`);
-    console.log("getUsers");
-    console.log(response.data);
     const { users } = response.data;
     dispatch({
       type: GET_USERS,
@@ -42,7 +40,6 @@ export const getUsers = () => async (dispatch) => {
 export const getFollowed = () => async (dispatch) => {
   try {
     const response = await axios.get(`${baseUrl}/followed`);
-    console.log(response.data);
     const { users } = response.data;
     dispatch({
       type: GET_FOLLOWED,

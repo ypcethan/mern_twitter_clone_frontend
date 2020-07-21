@@ -19,7 +19,6 @@ const Messages = () => {
     else{
       setListToRender(followedUsers);
     }
-    console.log(listToRender);
   }, [searchName, followedUsers]);
   return (
     <div>

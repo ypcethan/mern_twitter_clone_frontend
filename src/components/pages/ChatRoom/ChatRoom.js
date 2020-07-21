@@ -27,9 +27,6 @@ const ChatRoom = (props) => {
     socket = io(server);
 
     socket.emit("join" , {name, room}, (error)=> {
-    //   console.log(name);
-    //   console.log(room);
-    //   console.log("join");
       if (error){
         alert(error);
       }
@@ -41,8 +38,6 @@ const ChatRoom = (props) => {
   } , []);
   useEffect(()=> {
     socket.on("message", msg=> {
-      console.log("Message");
-      console.log(msg);
       if (Array.isArray(msg)){
         setMessages((message)=> [...message, ...msg]);
       }

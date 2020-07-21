@@ -60,7 +60,6 @@ export const getAllTweetsFromUser = (userId) => async (dispatch) => {
 export const getTweet = (id) => async (dispatch) => {
   try {
     const response = await axios.get(`${baseUrl}/${id}`);
-    console.log(response);
     dispatch({
       type: GET_TWEET,
       payload: response.data.tweet,
@@ -112,8 +111,6 @@ export const getAllUserComments = (userId) => async (dispatch) => {
       payload:true
     });
     const response = await axios.get(`${baseUrl}/user/${userId}/comments` );
-    console.log("Comments");
-    console.log(response.data);
     dispatch({
       type: GET_ALL_USER_COMMENTS,
       payload: response.data.tweets,
@@ -149,8 +146,6 @@ export const getAllUserLikes= (userId) => async (dispatch) => {
       payload:true
     });
     const response = await axios.get(`${baseUrl}/user/${userId}/likes` );
-    console.log("Likes");
-    console.log(response.data);
     dispatch({
       type: GET_ALL_USER_LIKES,
       payload: response.data.tweets,
