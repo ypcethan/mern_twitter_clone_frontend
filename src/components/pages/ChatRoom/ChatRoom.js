@@ -8,6 +8,7 @@ let socket;
 
 const ChatRoom = (props) => {
   const chatRoomContainerRef = useRef();
+  const chatFormRef = useRef();
   const followedUser = props.history.location.followedUser;
   const user = useSelector(state=>state.auth.user);
   const [focused, setFocused] = useState(false);
@@ -51,15 +52,24 @@ const ChatRoom = (props) => {
     });
   },[]);
 
+  useEffect(()=> {
+
+    if (focused) {
+      chatFormRef.current.rows = 5;
+    }else{
+
+      chatFormRef.current.rows = 1;
+    }
+  }, [focused]);
+
   const scrollDown = () => {
     const scroll = chatRoomContainerRef.current.scrollHeight - 
-    chatRoomContainerRef.current.clientHeight  ; 
-
+    chatRoomContainerRef.current.clientHeight;  
     chatRoomContainerRef.current.scrollTo(0,scroll);
-    
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("submit");
     socket.emit("sendMessage", {
       content,
       userName: user.userName,
@@ -75,22 +85,28 @@ const ChatRoom = (props) => {
               Message
         </div>
       </div>
-      <div className='chat__room__container' >
+      <div className={`chat__room__container ${focused ? "chat__room__container--focus" : "chat__room__container--blur"}`} >
         <div  ref={chatRoomContainerRef} id='chat__history__box'
           className='chat__history__box'>
           <ChatHistory messages={messages} user={user} followedUser={followedUser}/>
         </div>
         <form 
           onSubmit={handleSubmit} 
-          className={`chat__room__form ${ focused ? "chat__room__form--focus":"chat__room__form--blur" }`}>
-          <input 
+          onFocus={()=>setFocused(true)}
+          // onBlur={()=>setFocused(false)}
+          className="chat__room__form" >
+          <textarea 
+            ref={chatFormRef}
             placeholder='Reply'
             type='text'
-            value={content}
             className='chat__room__input'
-            onBlur={()=>setFocused(false)}
-            onFocus={()=>setFocused(true)}
+            rows='1'
+            value={content}
             onChange={e=> setContent(e.target.value )} />
+          <div className='chat__room__form__submit__container'>
+            <button 
+              type='submit' className='chat__room__form__submit'>Reply</button>
+          </div>
         </form>
       </div>
     </div>

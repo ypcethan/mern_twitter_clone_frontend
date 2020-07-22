@@ -36,7 +36,6 @@ const TweetButtonSet = ({tweet}) => {
     const baseUrl = backEnd + "/v1/tweets";
     // dispatch(createLike(tweet._id));
     const response = await axios.post(`${baseUrl}/${tweet._id}/likes` );
-    console.log(response.data);
     setUserLiked(response.data.tweet.likedBy.includes(user._id));
     setLikesCount(response.data.count);
   };
