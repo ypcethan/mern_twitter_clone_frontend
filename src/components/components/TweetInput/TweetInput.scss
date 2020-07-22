@@ -64,4 +64,10 @@
         object-fit: cover;
         border-radius: 100%;
     }
+
+    &--default{
+        background-color: rgb(212, 212, 212);
+        padding: 1rem;
+        border-radius: 100%;
+    }
 }

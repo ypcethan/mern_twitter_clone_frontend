@@ -69,13 +69,13 @@ const Profile = () => {
   );
   return (
     <div className="profile__container">
-      <ProfileHeader />
       {user ? (
         <>
+          <ProfileHeader user={user} tweetCount = {tweets.length}/>
           <ProfileInfo user={user} authUser={authUser}/>
           <ProfileMediaSelection setTab={setTab} selected={tab} />
         </>
-      ) : "Loading"}
+      ) : spinner}
       {isLoading ? spinner : renderList()}
       {/* <TweetList tweets={tweets}/> */}
     </div>

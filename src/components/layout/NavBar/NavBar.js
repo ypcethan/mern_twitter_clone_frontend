@@ -36,7 +36,6 @@ const NavBar = () => {
   const submitTweet = (data) => {
     dispatch(createTweet(data));
   };
-  console.log(pathname);
   const authLinks = (
     <>
       <ul className="nav__list">
