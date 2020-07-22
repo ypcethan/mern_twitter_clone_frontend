@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,21 +12,12 @@ import "./Register.scss";
 
 const Register = (props) => {
   const dispatch = useDispatch();
-  const [name, setName] = useState("");
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const error = useSelector((state) => state.auth.error);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmitForm = () => {
-    dispatch(registerUser({
-      name,
-      userName,
-      email,
-      password,
-    }));
+  const onSubmitForm = (data) => {
+    dispatch(registerUser(data));
   };
   useEffect(() => {
     if (isAuthenticated) {
@@ -53,8 +44,6 @@ const Register = (props) => {
             name="name"
             id="name"
             className="form__input"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
             ref={register({
               required: {
                 value: true,
@@ -71,8 +60,6 @@ const Register = (props) => {
             name="userName"
             id="userName"
             className="form__input"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
             ref={register({
               required: {
                 value: true,
@@ -89,8 +76,6 @@ const Register = (props) => {
             name="email"
             id="email"
             className="form__input"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             ref={register({
               required: {
                 value: true,
@@ -111,8 +96,6 @@ const Register = (props) => {
             name="password"
             id="password"
             className="form__input"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
             ref={register({
               required: {
                 value: true,

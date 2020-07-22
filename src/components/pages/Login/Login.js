@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, {  useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -12,18 +12,14 @@ import "../Register/Register.scss";
 
 const Login = (props) => {
   const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const error = useSelector((state) => state.auth.error);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const { register, handleSubmit, errors } = useForm();
 
-  const onSubmitForm = () => {
-    dispatch(loginUser({
-      email,
-      password,
-    }));
+  const onSubmitForm = (data) => {
+    dispatch(loginUser(data));
   };
+
   useEffect(() => {
     if (isAuthenticated) {
       props.history.push("/");
@@ -33,6 +29,7 @@ const Login = (props) => {
       dispatch(clearError());
     }
   }, [error, isAuthenticated]);
+
   return (
     <div className="form__container">
       <div className="logo">
@@ -50,8 +47,6 @@ const Login = (props) => {
             name="email"
             id="email"
             className="form__input"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             ref={register({
               required: {
                 value: true,
@@ -72,8 +67,6 @@ const Login = (props) => {
             name="password"
             id="password"
             className="form__input"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
             ref={register({
               required: {
                 value: true,
