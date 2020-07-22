@@ -1,4 +1,12 @@
+@import "../../../styles/base" ;
 .container{
     width: 40%;
     margin: auto; 
 }
+
+@media screen and (max-width: $small-screen) {
+    .container {
+        width: 80%;
+    }
+}
+
