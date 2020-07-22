@@ -4,7 +4,7 @@ import "./ChatHistory.scss";
 const ChatHistory = ({messages ,user ,followedUser}) => {
  
   return (
-    <div >
+    < >
       {messages.map(m=> (
         <div
           className={`chat__response__container 
@@ -31,7 +31,7 @@ const ChatHistory = ({messages ,user ,followedUser}) => {
           </div>
         </div>
       ))} 
-    </div>
+    </>
   );
 };
 

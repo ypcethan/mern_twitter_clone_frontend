@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from "react";
+import React,{useState, useEffect,useRef} from "react";
 import {useSelector } from "react-redux";
 import {useParams} from "react-router-dom";
 import io from "socket.io-client";
@@ -7,6 +7,7 @@ import "./ChatRoom.scss";
 let socket;
 
 const ChatRoom = (props) => {
+  const chatRoomContainerRef = useRef();
   const followedUser = props.history.location.followedUser;
   const user = useSelector(state=>state.auth.user);
   const [focused, setFocused] = useState(false);
@@ -46,9 +47,17 @@ const ChatRoom = (props) => {
       else{
         setMessages((message)=> [...message, msg]);
       }
+      scrollDown();
     });
   },[]);
 
+  const scrollDown = () => {
+    const scroll = chatRoomContainerRef.current.scrollHeight - 
+    chatRoomContainerRef.current.clientHeight  ; 
+
+    chatRoomContainerRef.current.scrollTo(0,scroll);
+    
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
     socket.emit("sendMessage", {
@@ -67,9 +76,10 @@ const ChatRoom = (props) => {
         </div>
       </div>
       <div className='chat__room__container' >
-
-        <ChatHistory messages={messages} user={user} followedUser={followedUser}/>
-
+        <div  ref={chatRoomContainerRef} id='chat__history__box'
+          className='chat__history__box'>
+          <ChatHistory messages={messages} user={user} followedUser={followedUser}/>
+        </div>
         <form 
           onSubmit={handleSubmit} 
           className={`chat__room__form ${ focused ? "chat__room__form--focus":"chat__room__form--blur" }`}>

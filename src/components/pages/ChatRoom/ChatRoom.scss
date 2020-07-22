@@ -1,24 +1,29 @@
+.chat__history__box{
+    height:80vh ;
+    overflow-y: scroll;
+}
 .chat__room{
 
     &__container{
-        min-height: 100vh;
+        min-height: 80vh;
        display: flex; 
        flex-direction: column;
        justify-content: space-between;
     }
     &__form{
-        position: sticky;
-        bottom: 0px;
+        // flex:1;
+        // position: sticky;
+        // bottom: 0px;
         background-color: #6dc2f6;
         padding: 1rem;
-        height: 40px;
-        &--focus{
-            animation: onFocus 0.3s forwards;
-        }
-        &--blur{
-            animation: outFocus 0.3s forwards;
-        }
-        animation-duration: 0.3s;
+        // height: 40px;
+        // &--focus{
+        //     animation: onFocus 0.3s forwards;
+        // }
+        // &--blur{
+        //     animation: outFocus 0.3s forwards;
+        // }
+        // animation-duration: 0.3s;
     }
 
     &__input{
